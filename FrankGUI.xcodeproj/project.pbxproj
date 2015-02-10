@@ -14,6 +14,7 @@
 		6EF0F4311A8A03470012FD03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EF0F42F1A8A03470012FD03 /* Main.storyboard */; };
 		6EF0F43D1A8A03470012FD03 /* FrankGUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0F43C1A8A03470012FD03 /* FrankGUITests.m */; };
 		6EF0F44A1A8A25A00012FD03 /* SanityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0F4491A8A25A00012FD03 /* SanityChecker.m */; };
+		6EF0F44F1A8A4EE50012FD03 /* ConsoleToolExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0F44E1A8A4EE50012FD03 /* ConsoleToolExecutor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		6EF0F43C1A8A03470012FD03 /* FrankGUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FrankGUITests.m; sourceTree = "<group>"; };
 		6EF0F4481A8A25A00012FD03 /* SanityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SanityChecker.h; sourceTree = "<group>"; };
 		6EF0F4491A8A25A00012FD03 /* SanityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SanityChecker.m; sourceTree = "<group>"; };
+		6EF0F44D1A8A4EE50012FD03 /* ConsoleToolExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleToolExecutor.h; sourceTree = "<group>"; };
+		6EF0F44E1A8A4EE50012FD03 /* ConsoleToolExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsoleToolExecutor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 			children = (
 				6EF0F4481A8A25A00012FD03 /* SanityChecker.h */,
 				6EF0F4491A8A25A00012FD03 /* SanityChecker.m */,
+				6EF0F44D1A8A4EE50012FD03 /* ConsoleToolExecutor.h */,
+				6EF0F44E1A8A4EE50012FD03 /* ConsoleToolExecutor.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				6EF0F42C1A8A03470012FD03 /* SettingsViewController.m in Sources */,
 				6EF0F4291A8A03470012FD03 /* main.m in Sources */,
 				6EF0F4271A8A03470012FD03 /* AppDelegate.m in Sources */,
+				6EF0F44F1A8A4EE50012FD03 /* ConsoleToolExecutor.m in Sources */,
 				6EF0F44A1A8A25A00012FD03 /* SanityChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

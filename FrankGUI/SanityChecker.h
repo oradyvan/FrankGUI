@@ -11,5 +11,6 @@
 @interface SanityChecker : NSObject
 
 - (BOOL)isValidAppPathURL:(NSURL *)appPathURL;
+- (NSString *)gitBranchNameInAppPathURL:(NSURL *)appPathURL;
 
 @end

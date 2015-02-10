@@ -34,12 +34,15 @@ static NSString *const kAppPathURLKey = @"AppPathURLKey";
     self.appBranchLabel.stringValue = @"";
 
     // use sanity checker for validating preferences
-    if ([self.sanityChecker isValidAppPathURL:[self.pathControl URL]])
+    NSURL *appPathURL = [self.pathControl URL];
+    if (![self.sanityChecker isValidAppPathURL:appPathURL])
     {
         self.warningLabel.stringValue = @"Warning! Incorrect path to app sources";
+        return;
     }
 
     self.warningLabel.stringValue = @"Ready to run!";
+    self.appBranchLabel.stringValue = [self.sanityChecker gitBranchNameInAppPathURL:appPathURL];
 }
 
 - (void)viewDidLoad {
