@@ -69,23 +69,34 @@
     return nil;
 }
 
-- (BOOL)isValidAppPathURL:(NSURL *)appPathURL
+- (BOOL)isValidRepositoryPathURL:(NSURL *)pathURL
 {
     // check that the given path points to an existing directory
-    if ([appPathURL isFileURL])
+    if ([pathURL isFileURL])
     {
-        NSString *path = [appPathURL path];
+        NSString *path = [pathURL path];
         BOOL pathIsDirectory = NO;
         BOOL pathExists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&pathIsDirectory];
         
         if (pathExists && pathIsDirectory)
         {
+            // there should be git branch available in that directory
             NSString *branchName = [self gitBranchNameInDirectory:path];
             return [branchName length] > 0;
         }
     }
-
+    
     return NO;
+}
+
+- (BOOL)isValidAppPathURL:(NSURL *)appPathURL
+{
+    return [self isValidRepositoryPathURL:appPathURL];
+}
+
+- (BOOL)isValidScriptsPathURL:(NSURL *)scriptsPathURL
+{
+    return [self isValidRepositoryPathURL:scriptsPathURL];
 }
 
 @end

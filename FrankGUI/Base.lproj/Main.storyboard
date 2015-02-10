@@ -717,7 +717,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ni7-eB-xun">
-                                <rect key="frame" x="18" y="236" width="99" height="17"/>
+                                <rect key="frame" x="18" y="220" width="99" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="App repository:" id="L61-td-uC2">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -725,15 +725,23 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ypi-g7-J73">
-                                <rect key="frame" x="18" y="211" width="80" height="17"/>
+                                <rect key="frame" x="18" y="195" width="80" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="App branch:" id="zzM-fx-iIB">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eTf-Aq-wqw">
+                                <rect key="frame" x="176" y="195" width="256" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="master" id="qWI-nf-ZIS">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <pathControl horizontalHuggingPriority="249" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cl0-qG-gqm">
-                                <rect key="frame" x="120" y="231" width="313" height="26"/>
+                                <rect key="frame" x="175" y="215" width="258" height="26"/>
                                 <pathCell key="cell" selectable="YES" editable="YES" alignment="left" placeholderString="" pathStyle="popUp" id="VT3-Mb-fDT">
                                     <font key="font" metaFont="system"/>
                                     <url key="url" string="file:///Users/"/>
@@ -746,35 +754,75 @@
                                     <outlet property="delegate" destination="9S3-1d-eyq" id="xuW-nF-0D5"/>
                                 </connections>
                             </pathControl>
-                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eTf-Aq-wqw">
-                                <rect key="frame" x="102" y="210" width="330" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="master" id="qWI-nf-ZIS">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gbu-Zy-bkG">
+                                <rect key="frame" x="18" y="154" width="154" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Frank scripts repository:" id="Pl7-ke-puS">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uHd-gB-L8d">
+                                <rect key="frame" x="18" y="129" width="135" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Frank scripts branch:" id="Xb9-CE-PUi">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HCK-dv-sCV">
+                                <rect key="frame" x="176" y="129" width="41" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="detail" id="isp-vK-lb8">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <pathControl horizontalHuggingPriority="249" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TXQ-Ep-EaU">
+                                <rect key="frame" x="175" y="149" width="258" height="26"/>
+                                <pathCell key="cell" selectable="YES" editable="YES" alignment="left" placeholderString="" pathStyle="popUp" id="Og3-Yh-Ua6">
+                                    <font key="font" metaFont="system"/>
+                                    <url key="url" string="file:///Users/"/>
+                                    <allowedTypes>
+                                        <string>public.folder</string>
+                                    </allowedTypes>
+                                </pathCell>
+                                <connections>
+                                    <action selector="pathControlValueChanged:" target="9S3-1d-eyq" id="eVg-kw-9Gi"/>
+                                    <outlet property="delegate" destination="9S3-1d-eyq" id="hfq-EY-s6J"/>
+                                </connections>
+                            </pathControl>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Cl0-qG-gqm" firstAttribute="centerY" secondItem="Ni7-eB-xun" secondAttribute="centerY" id="3jc-9v-oNh"/>
+                            <constraint firstItem="uHd-gB-L8d" firstAttribute="top" secondItem="gbu-Zy-bkG" secondAttribute="bottom" constant="8" symbolic="YES" id="48u-Jf-Mvy"/>
+                            <constraint firstAttribute="trailing" secondItem="TXQ-Ep-EaU" secondAttribute="trailing" constant="20" symbolic="YES" id="6m1-tr-FnQ"/>
+                            <constraint firstItem="TXQ-Ep-EaU" firstAttribute="leading" secondItem="Cl0-qG-gqm" secondAttribute="leading" id="747-cw-1n1"/>
                             <constraint firstItem="Vlh-aE-JMg" firstAttribute="top" secondItem="5yc-gP-MvD" secondAttribute="top" constant="20" symbolic="YES" id="8EF-4K-QuZ"/>
-                            <constraint firstItem="eTf-Aq-wqw" firstAttribute="leading" secondItem="Ypi-g7-J73" secondAttribute="trailing" constant="8" symbolic="YES" id="8p9-3j-1gI"/>
-                            <constraint firstItem="Ni7-eB-xun" firstAttribute="top" secondItem="Vlh-aE-JMg" secondAttribute="bottom" constant="8" symbolic="YES" id="Bu2-1V-JZq"/>
+                            <constraint firstItem="uHd-gB-L8d" firstAttribute="baseline" secondItem="HCK-dv-sCV" secondAttribute="baseline" id="9lE-KT-8HL"/>
+                            <constraint firstItem="Ni7-eB-xun" firstAttribute="top" secondItem="Vlh-aE-JMg" secondAttribute="bottom" constant="24" id="Bu2-1V-JZq"/>
                             <constraint firstAttribute="trailing" secondItem="eTf-Aq-wqw" secondAttribute="trailing" constant="20" symbolic="YES" id="DIl-ZW-D7v"/>
+                            <constraint firstItem="gbu-Zy-bkG" firstAttribute="top" secondItem="Ypi-g7-J73" secondAttribute="bottom" constant="24" id="Fkd-GY-fRT"/>
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="top" secondItem="Ni7-eB-xun" secondAttribute="bottom" constant="8" symbolic="YES" id="JoG-QZ-KVi"/>
+                            <constraint firstItem="TXQ-Ep-EaU" firstAttribute="leading" secondItem="gbu-Zy-bkG" secondAttribute="trailing" constant="8" symbolic="YES" id="Mfh-Nc-3Dr"/>
+                            <constraint firstItem="gbu-Zy-bkG" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="Nx5-AH-cY5"/>
                             <constraint firstItem="Ni7-eB-xun" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="P5u-CR-rJw"/>
-                            <constraint firstItem="Ypi-g7-J73" firstAttribute="baseline" secondItem="eTf-Aq-wqw" secondAttribute="baseline" constant="-1" id="Qdm-E3-J1M"/>
+                            <constraint firstItem="eTf-Aq-wqw" firstAttribute="leading" secondItem="HCK-dv-sCV" secondAttribute="leading" id="PoL-VT-1yr"/>
+                            <constraint firstItem="Ypi-g7-J73" firstAttribute="baseline" secondItem="eTf-Aq-wqw" secondAttribute="baseline" id="Qdm-E3-J1M"/>
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="T03-XF-UUT"/>
                             <constraint firstAttribute="trailing" secondItem="Cl0-qG-gqm" secondAttribute="trailing" constant="20" symbolic="YES" id="Vnp-l9-cdL"/>
                             <constraint firstAttribute="trailing" secondItem="Vlh-aE-JMg" secondAttribute="trailing" constant="20" symbolic="YES" id="a38-WY-ro3"/>
+                            <constraint firstItem="uHd-gB-L8d" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="a79-aI-voW"/>
                             <constraint firstItem="Vlh-aE-JMg" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="fhs-2W-IM7"/>
-                            <constraint firstItem="Cl0-qG-gqm" firstAttribute="leading" secondItem="Ni7-eB-xun" secondAttribute="trailing" constant="8" symbolic="YES" id="u6S-L8-wUq"/>
-                            <constraint firstItem="Cl0-qG-gqm" firstAttribute="leading" secondItem="Ni7-eB-xun" secondAttribute="trailing" constant="8" symbolic="YES" id="vcs-7L-EO9"/>
+                            <constraint firstItem="TXQ-Ep-EaU" firstAttribute="centerY" secondItem="gbu-Zy-bkG" secondAttribute="centerY" id="jA4-ho-1AT"/>
+                            <constraint firstItem="TXQ-Ep-EaU" firstAttribute="leading" secondItem="HCK-dv-sCV" secondAttribute="leading" id="vYd-uI-ieJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="appBranchLabel" destination="eTf-Aq-wqw" id="MAv-fo-joO"/>
-                        <outlet property="pathControl" destination="Cl0-qG-gqm" id="UTc-KU-DZx"/>
+                        <outlet property="appPathControl" destination="Cl0-qG-gqm" id="ORG-0C-d7x"/>
+                        <outlet property="scriptsBranchLabel" destination="HCK-dv-sCV" id="Wk1-zt-tfl"/>
+                        <outlet property="scriptsPathControl" destination="TXQ-Ep-EaU" id="f7A-83-epS"/>
                         <outlet property="warningLabel" destination="Vlh-aE-JMg" id="Sfn-HD-Xg1"/>
                     </connections>
                 </viewController>
