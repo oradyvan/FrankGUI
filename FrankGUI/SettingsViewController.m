@@ -23,7 +23,8 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 
 @property (nonatomic, weak) SanityChecker *sanityChecker;
 
-- (IBAction)pathControlValueChanged:(id)sender;
+- (IBAction)appPathControlValueChanged:(id)sender;
+- (IBAction)scriptsPathControlValueChanged:(id)sender;
 - (void)validateSettings;
 
 @end
@@ -98,29 +99,33 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     // Update the view, if already loaded.
 }
 
-- (IBAction)pathControlValueChanged:(id)sender
+- (IBAction)appPathControlValueChanged:(id)sender
 {
     NSPathControl *control = (NSPathControl *)sender;
+    NSAssert(control == self.appPathControl, @"This event handler is only valid for app path control");
 
-    if (control == self.appPathControl)
-    {
-        // Select that chosen component of the path.
-        NSURL *pathURL = [[self.appPathControl clickedPathComponentCell] URL];
-        [self.appPathControl setURL:pathURL];
+    // Select that chosen component of the path.
+    NSURL *pathURL = [[self.appPathControl clickedPathComponentCell] URL];
+    [self.appPathControl setURL:pathURL];
 
-        // Store the selected path in user preferences
-        [[NSUserDefaults standardUserDefaults] setURL:pathURL forKey:kAppPathURLKey];
-    }
-    else if (control == self.scriptsPathControl)
-    {
-        // Select that chosen component of the path.
-        NSURL *pathURL = [[self.scriptsPathControl clickedPathComponentCell] URL];
-        [self.scriptsPathControl setURL:pathURL];
+    // Store the selected path in user preferences
+    [[NSUserDefaults standardUserDefaults] setURL:pathURL forKey:kAppPathURLKey];
 
-        // Store the selected path in user preferences
-        [[NSUserDefaults standardUserDefaults] setURL:pathURL forKey:kScriptsPathURLKey];
-    }
+    [self validateSettings];
+}
 
+- (IBAction)scriptsPathControlValueChanged:(id)sender
+{
+    NSPathControl *control = (NSPathControl *)sender;
+    NSAssert(control == self.scriptsPathControl, @"This event handler is only valid for Frank scripts path control");
+    
+    // Select that chosen component of the path.
+    NSURL *pathURL = [[self.scriptsPathControl clickedPathComponentCell] URL];
+    [self.scriptsPathControl setURL:pathURL];
+    
+    // Store the selected path in user preferences
+    [[NSUserDefaults standardUserDefaults] setURL:pathURL forKey:kScriptsPathURLKey];
+    
     [self validateSettings];
 }
 

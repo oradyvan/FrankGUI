@@ -750,7 +750,7 @@
                                     </allowedTypes>
                                 </pathCell>
                                 <connections>
-                                    <action selector="pathControlValueChanged:" target="9S3-1d-eyq" id="bvq-FV-EVq"/>
+                                    <action selector="appPathControlValueChanged:" target="9S3-1d-eyq" id="qlb-kW-WFI"/>
                                     <outlet property="delegate" destination="9S3-1d-eyq" id="xuW-nF-0D5"/>
                                 </connections>
                             </pathControl>
@@ -788,7 +788,7 @@
                                     </allowedTypes>
                                 </pathCell>
                                 <connections>
-                                    <action selector="pathControlValueChanged:" target="9S3-1d-eyq" id="eVg-kw-9Gi"/>
+                                    <action selector="scriptsPathControlValueChanged:" target="9S3-1d-eyq" id="ix2-GC-TRx"/>
                                     <outlet property="delegate" destination="9S3-1d-eyq" id="hfq-EY-s6J"/>
                                 </connections>
                             </pathControl>
