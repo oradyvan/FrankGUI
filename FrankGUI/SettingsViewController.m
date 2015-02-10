@@ -27,14 +27,10 @@ static NSString *const kAppPathURLKey = @"AppPathURLKey";
     [super viewDidLoad];
 
     // Load app path from user preferences
-    NSString *pathURLString = [[NSUserDefaults standardUserDefaults] stringForKey:kAppPathURLKey];
-    if (nil != pathURLString)
+    NSURL *pathURL = [[NSUserDefaults standardUserDefaults] URLForKey:kAppPathURLKey];
+    if (nil != pathURL)
     {
-        NSURL *pathURL = [NSURL URLWithString:pathURLString];
-        if (nil != pathURL)
-        {
-            [self.pathControl setURL:pathURL];
-        }
+        [self.pathControl setURL:pathURL];
     }
 
     // Do any additional setup after loading the view.
@@ -55,8 +51,7 @@ static NSString *const kAppPathURLKey = @"AppPathURLKey";
     [self.pathControl setURL:pathURL];
 
     // Store the selected path in user preferences
-    NSString *pathURLString = [pathURL absoluteString];
-    [[NSUserDefaults standardUserDefaults] setObject:pathURLString forKey:kAppPathURLKey];
+    [[NSUserDefaults standardUserDefaults] setURL:pathURL forKey:kAppPathURLKey];
 }
 
 @end
