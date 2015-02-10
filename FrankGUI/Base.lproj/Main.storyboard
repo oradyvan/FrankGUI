@@ -703,11 +703,76 @@
         <!--Settings-->
         <scene sceneID="w7T-dO-FeW">
             <objects>
-                <viewController title="Settings" id="9S3-1d-eyq" sceneMemberID="viewController">
+                <viewController title="Settings" id="9S3-1d-eyq" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" id="5yc-gP-MvD">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vlh-aE-JMg">
+                                <rect key="frame" x="18" y="261" width="414" height="19"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="Warning" id="GTi-dt-stH">
+                                    <font key="font" metaFont="systemBold" size="16"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ni7-eB-xun">
+                                <rect key="frame" x="18" y="236" width="99" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="App repository:" id="L61-td-uC2">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ypi-g7-J73">
+                                <rect key="frame" x="18" y="211" width="80" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="App branch:" id="zzM-fx-iIB">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <pathControl horizontalHuggingPriority="249" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cl0-qG-gqm">
+                                <rect key="frame" x="120" y="231" width="313" height="26"/>
+                                <pathCell key="cell" selectable="YES" editable="YES" alignment="left" placeholderString="" pathStyle="popUp" id="VT3-Mb-fDT">
+                                    <font key="font" metaFont="system"/>
+                                    <url key="url" string="file:///Users/"/>
+                                </pathCell>
+                                <connections>
+                                    <outlet property="delegate" destination="9S3-1d-eyq" id="xuW-nF-0D5"/>
+                                </connections>
+                            </pathControl>
+                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eTf-Aq-wqw">
+                                <rect key="frame" x="102" y="210" width="330" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="master" id="qWI-nf-ZIS">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Cl0-qG-gqm" firstAttribute="centerY" secondItem="Ni7-eB-xun" secondAttribute="centerY" id="3jc-9v-oNh"/>
+                            <constraint firstItem="Vlh-aE-JMg" firstAttribute="top" secondItem="5yc-gP-MvD" secondAttribute="top" constant="20" symbolic="YES" id="8EF-4K-QuZ"/>
+                            <constraint firstItem="eTf-Aq-wqw" firstAttribute="leading" secondItem="Ypi-g7-J73" secondAttribute="trailing" constant="8" symbolic="YES" id="8p9-3j-1gI"/>
+                            <constraint firstItem="Ni7-eB-xun" firstAttribute="top" secondItem="Vlh-aE-JMg" secondAttribute="bottom" constant="8" symbolic="YES" id="Bu2-1V-JZq"/>
+                            <constraint firstAttribute="trailing" secondItem="eTf-Aq-wqw" secondAttribute="trailing" constant="20" symbolic="YES" id="DIl-ZW-D7v"/>
+                            <constraint firstItem="Ypi-g7-J73" firstAttribute="top" secondItem="Ni7-eB-xun" secondAttribute="bottom" constant="8" symbolic="YES" id="JoG-QZ-KVi"/>
+                            <constraint firstItem="Ni7-eB-xun" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="P5u-CR-rJw"/>
+                            <constraint firstItem="Ypi-g7-J73" firstAttribute="baseline" secondItem="eTf-Aq-wqw" secondAttribute="baseline" constant="-1" id="Qdm-E3-J1M"/>
+                            <constraint firstItem="Ypi-g7-J73" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="T03-XF-UUT"/>
+                            <constraint firstAttribute="trailing" secondItem="Cl0-qG-gqm" secondAttribute="trailing" constant="20" symbolic="YES" id="Vnp-l9-cdL"/>
+                            <constraint firstAttribute="trailing" secondItem="Vlh-aE-JMg" secondAttribute="trailing" constant="20" symbolic="YES" id="a38-WY-ro3"/>
+                            <constraint firstItem="Vlh-aE-JMg" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="fhs-2W-IM7"/>
+                            <constraint firstItem="Cl0-qG-gqm" firstAttribute="leading" secondItem="Ni7-eB-xun" secondAttribute="trailing" constant="8" symbolic="YES" id="u6S-L8-wUq"/>
+                            <constraint firstItem="Cl0-qG-gqm" firstAttribute="leading" secondItem="Ni7-eB-xun" secondAttribute="trailing" constant="8" symbolic="YES" id="vcs-7L-EO9"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="appBranchLabel" destination="eTf-Aq-wqw" id="MAv-fo-joO"/>
+                        <outlet property="pathControl" destination="Cl0-qG-gqm" id="UTc-KU-DZx"/>
+                        <outlet property="warningLabel" destination="Vlh-aE-JMg" id="Sfn-HD-Xg1"/>
+                    </connections>
                 </viewController>
                 <customObject id="Wcb-3C-ZbN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
