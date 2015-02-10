@@ -13,6 +13,7 @@
 		6EF0F42E1A8A03470012FD03 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EF0F42D1A8A03470012FD03 /* Images.xcassets */; };
 		6EF0F4311A8A03470012FD03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EF0F42F1A8A03470012FD03 /* Main.storyboard */; };
 		6EF0F43D1A8A03470012FD03 /* FrankGUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0F43C1A8A03470012FD03 /* FrankGUITests.m */; };
+		6EF0F44A1A8A25A00012FD03 /* SanityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0F4491A8A25A00012FD03 /* SanityChecker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		6EF0F4361A8A03470012FD03 /* FrankGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrankGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EF0F43B1A8A03470012FD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EF0F43C1A8A03470012FD03 /* FrankGUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FrankGUITests.m; sourceTree = "<group>"; };
+		6EF0F4481A8A25A00012FD03 /* SanityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SanityChecker.h; sourceTree = "<group>"; };
+		6EF0F4491A8A25A00012FD03 /* SanityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SanityChecker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,7 @@
 			children = (
 				6EF0F4251A8A03470012FD03 /* AppDelegate.h */,
 				6EF0F4261A8A03470012FD03 /* AppDelegate.m */,
+				6EF0F44B1A8A25AC0012FD03 /* Models */,
 				6EF0F4471A8A0E760012FD03 /* View Controllers */,
 				6EF0F42D1A8A03470012FD03 /* Images.xcassets */,
 				6EF0F42F1A8A03470012FD03 /* Main.storyboard */,
@@ -122,6 +126,15 @@
 				6EF0F42B1A8A03470012FD03 /* SettingsViewController.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		6EF0F44B1A8A25AC0012FD03 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6EF0F4481A8A25A00012FD03 /* SanityChecker.h */,
+				6EF0F4491A8A25A00012FD03 /* SanityChecker.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +239,7 @@
 				6EF0F42C1A8A03470012FD03 /* SettingsViewController.m in Sources */,
 				6EF0F4291A8A03470012FD03 /* main.m in Sources */,
 				6EF0F4271A8A03470012FD03 /* AppDelegate.m in Sources */,
+				6EF0F44A1A8A25A00012FD03 /* SanityChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,8 @@
 //
 
 #import "SettingsViewController.h"
+#import "AppDelegate.h"
+#import "SanityChecker.h"
 
 static NSString *const kAppPathURLKey = @"AppPathURLKey";
 
@@ -16,12 +18,29 @@ static NSString *const kAppPathURLKey = @"AppPathURLKey";
 @property (nonatomic, weak) IBOutlet NSPathControl *pathControl;
 @property (nonatomic, weak) IBOutlet NSTextField *appBranchLabel;
 
+@property (nonatomic, weak) SanityChecker *sanityChecker;
+
 - (IBAction)pathControlValueChanged:(id)sender;
+- (void)validateSettings;
 
 @end
 
 
 @implementation SettingsViewController
+
+- (void)validateSettings
+{
+    self.warningLabel.stringValue = @"Validating…";
+    self.appBranchLabel.stringValue = @"";
+
+    // use sanity checker for validating preferences
+    if ([self.sanityChecker isValidAppPathURL:[self.pathControl URL]])
+    {
+        self.warningLabel.stringValue = @"Warning! Incorrect path to app sources";
+    }
+
+    self.warningLabel.stringValue = @"Ready to run!";
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,9 +52,11 @@ static NSString *const kAppPathURLKey = @"AppPathURLKey";
         [self.pathControl setURL:pathURL];
     }
 
-    // Do any additional setup after loading the view.
-    self.warningLabel.stringValue = @"WTF\nis this control\ndoing?";
-    self.appBranchLabel.stringValue = @"unknown branch here!";
+    // prepare sanity checker for use in this view controller
+    self.sanityChecker = [(AppDelegate *)[[NSApplication sharedApplication] delegate] sanityChecker];
+
+    // perform initial validation of settings
+    [self validateSettings];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -52,6 +73,8 @@ static NSString *const kAppPathURLKey = @"AppPathURLKey";
 
     // Store the selected path in user preferences
     [[NSUserDefaults standardUserDefaults] setURL:pathURL forKey:kAppPathURLKey];
+
+    [self validateSettings];
 }
 
 @end

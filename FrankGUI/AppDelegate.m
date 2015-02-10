@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SanityChecker.h"
 
 @interface AppDelegate ()
 
@@ -14,12 +15,23 @@
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+- (SanityChecker *)sanityChecker
+{
+    if (nil == _sanityChecker)
+    {
+        _sanityChecker = [SanityChecker new];
+    }
+    return _sanityChecker;
 }
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+    // Set up app
+}
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
+    // Tear down app
 }
 
 @end

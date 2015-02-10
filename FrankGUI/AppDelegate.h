@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SanityChecker;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+@property (nonatomic, strong) SanityChecker *sanityChecker;
 
 @end
-
