@@ -667,7 +667,7 @@
         <!--Tab View Controller-->
         <scene sceneID="u0g-SE-nbl">
             <objects>
-                <tabViewController id="aWY-bK-Ksu" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="1" id="aWY-bK-Ksu" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="uQO-ce-5NI"/>
                         <tabViewItem identifier="" id="OiN-IP-R2V"/>
@@ -737,8 +737,12 @@
                                 <pathCell key="cell" selectable="YES" editable="YES" alignment="left" placeholderString="" pathStyle="popUp" id="VT3-Mb-fDT">
                                     <font key="font" metaFont="system"/>
                                     <url key="url" string="file:///Users/"/>
+                                    <allowedTypes>
+                                        <string>public.folder</string>
+                                    </allowedTypes>
                                 </pathCell>
                                 <connections>
+                                    <action selector="pathControlValueChanged:" target="9S3-1d-eyq" id="bvq-FV-EVq"/>
                                     <outlet property="delegate" destination="9S3-1d-eyq" id="xuW-nF-0D5"/>
                                 </connections>
                             </pathControl>
