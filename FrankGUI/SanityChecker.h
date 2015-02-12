@@ -12,10 +12,11 @@
 
 @property (nonatomic, copy) NSURL *appPathURL;
 @property (nonatomic, copy) NSURL *scriptsPathURL;
+@property (nonatomic, readonly) NSString *gitBranchNameInAppPathURL;
+@property (nonatomic, readonly) NSString *gitBranchNameInScriptsPathURL;
 
 - (BOOL)isValidAppPathURL;
 - (BOOL)isValidScriptsPathURL;
-- (NSString *)gitBranchNameInAppPathURL;
-- (NSString *)gitBranchNameInScriptsPathURL;
+- (BOOL)areTheSameBranchesInAppAndInScriptsPaths;
 
 @end

@@ -10,6 +10,13 @@
 #import "AppDelegate.h"
 #import "SanityChecker.h"
 
+typedef enum
+{
+    WarnLevelOK,
+    WarnLevelIssue,
+    WarnLevelError
+} WarnLevel;
+
 static NSString *const kAppPathURLKey     = @"AppPathURLKey";
 static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 
@@ -26,6 +33,8 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 - (IBAction)appPathControlValueChanged:(id)sender;
 - (IBAction)scriptsPathControlValueChanged:(id)sender;
 - (void)validateSettings;
+- (void)warnLevel:(WarnLevel)warnLevel message:(NSString *)message;
+- (void)setText:(NSString *)text inTextField:(NSTextField *)textField;
 
 @end
 
@@ -34,39 +43,65 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 
 - (void)validateSettings
 {
-    BOOL isReadyToRun = YES;
-
-    self.warningLabel.stringValue = @"Validating…";
-    self.appBranchLabel.stringValue = @"";
-    self.scriptsBranchLabel.stringValue = @"";
+    [self warnLevel:WarnLevelOK message:@"Validating…"];
+    [self setText:nil inTextField:self.appBranchLabel];
+    [self setText:nil inTextField:self.scriptsBranchLabel];
 
     // use sanity checker for validating preferences
     self.sanityChecker.appPathURL = [self.appPathControl URL];
-    if ([self.sanityChecker isValidAppPathURL])
-    {
-        self.appBranchLabel.stringValue = [self.sanityChecker gitBranchNameInAppPathURL];
-    }
-    else
-    {
-        isReadyToRun = NO;
-        self.warningLabel.stringValue = @"Warning! Incorrect path to app sources";
-    }
+    [self setText:[self.sanityChecker gitBranchNameInAppPathURL] inTextField:self.appBranchLabel];
 
     self.sanityChecker.scriptsPathURL = [self.scriptsPathControl URL];
-    if ([self.sanityChecker isValidAppPathURL])
+    [self setText:[self.sanityChecker gitBranchNameInScriptsPathURL] inTextField:self.scriptsBranchLabel];
+
+    if (![self.sanityChecker isValidAppPathURL])
     {
-        self.scriptsBranchLabel.stringValue = [self.sanityChecker gitBranchNameInScriptsPathURL];
-    }
-    else
-    {
-        isReadyToRun = NO;
-        self.warningLabel.stringValue = @"Warning! Incorrect path to Frank scripts";
+        [self warnLevel:WarnLevelError message:@"Error! Incorrect path to app sources"];
+        return;
     }
 
-    if (isReadyToRun)
+    if (![self.sanityChecker isValidScriptsPathURL])
     {
-        self.warningLabel.stringValue = @"Ready to run!";
+        [self warnLevel:WarnLevelError message:@"Error! Incorrect path to Frank scripts"];
+        return;
     }
+
+    // verifying correctness of both branches
+    if (![self.sanityChecker areTheSameBranchesInAppAndInScriptsPaths])
+    {
+        [self warnLevel:WarnLevelIssue message:@"Warning! App has checked out of branch different from Frank scripts branch.\nMake sure you understand what you are doing!"];
+        return;
+    }
+
+    // if we got here, all the checks have passed
+    [self warnLevel:WarnLevelOK message:@"Ready to run!"];
+}
+
+- (void)warnLevel:(WarnLevel)warnLevel message:(NSString *)message
+{
+    [self setText:message inTextField:self.warningLabel];
+
+    switch (warnLevel) {
+        case WarnLevelOK:
+            self.warningLabel.textColor = [NSColor textColor];
+            break;
+
+        case WarnLevelIssue:
+            self.warningLabel.textColor = [NSColor colorWithRed:0.7f green:0.f blue:0.1f alpha:1.0f];
+            break;
+            
+        case WarnLevelError:
+            self.warningLabel.textColor = [NSColor redColor];
+            break;
+
+        default:
+            break;
+    }
+}
+
+- (void)setText:(NSString *)text inTextField:(NSTextField *)textField
+{
+    textField.stringValue = (nil == text) ? @"" : text;
 }
 
 - (void)viewDidLoad {

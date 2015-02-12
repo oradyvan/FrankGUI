@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) ConsoleToolExecutor *executor;
 @property (nonatomic, strong) NSString *gitLaunchPath;
+@property (nonatomic, strong) NSString *gitBranchNameInAppPathURL;
+@property (nonatomic, strong) NSString *gitBranchNameInScriptsPathURL;
 
 - (void)setupToolsPaths;
 - (NSString *)gitBranchNameInDirectory:(NSString *)directory;
@@ -66,14 +68,22 @@
     return nil;
 }
 
-- (NSString *)gitBranchNameInAppPathURL
+- (void)setAppPathURL:(NSURL *)appPathURL
 {
-    return [self gitBranchNameInDirectory:[self.appPathURL path]];
+    if (appPathURL != _appPathURL)
+    {
+        _appPathURL = appPathURL;
+        self.gitBranchNameInAppPathURL = [self gitBranchNameInDirectory:[_appPathURL path]];
+    }
 }
 
-- (NSString *)gitBranchNameInScriptsPathURL
+- (void)setScriptsPathURL:(NSURL *)scriptsPathURL
 {
-    return [self gitBranchNameInDirectory:[self.scriptsPathURL path]];
+    if (scriptsPathURL != _scriptsPathURL)
+    {
+        _scriptsPathURL = scriptsPathURL;
+        self.gitBranchNameInScriptsPathURL = [self gitBranchNameInDirectory:[_scriptsPathURL path]];
+    }
 }
 
 - (BOOL)isValidRepositoryPathURL:(NSURL *)pathURL
@@ -85,25 +95,28 @@
         BOOL pathIsDirectory = NO;
         BOOL pathExists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&pathIsDirectory];
         
-        if (pathExists && pathIsDirectory)
-        {
-            // there should be git branch available in that directory
-            NSString *branchName = [self gitBranchNameInDirectory:path];
-            return [branchName length] > 0;
-        }
+        return pathExists && pathIsDirectory;
     }
-    
+
     return NO;
 }
 
 - (BOOL)isValidAppPathURL
 {
-    return [self isValidRepositoryPathURL:self.appPathURL];
+    // there should be git branch available in that directory
+    return [self isValidRepositoryPathURL:self.appPathURL ] && [self.gitBranchNameInAppPathURL length] > 0;
 }
 
 - (BOOL)isValidScriptsPathURL
 {
-    return [self isValidRepositoryPathURL:self.scriptsPathURL];
+    // there should be git branch available in that directory
+    return [self isValidRepositoryPathURL:self.scriptsPathURL] && [self.gitBranchNameInScriptsPathURL length] > 0;
+}
+
+- (BOOL)areTheSameBranchesInAppAndInScriptsPaths
+{
+    // both branches for app and for scripts must be the same
+    return [self.gitBranchNameInAppPathURL isEqualToString:self.gitBranchNameInScriptsPathURL];
 }
 
 @end
