@@ -41,10 +41,10 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     self.scriptsBranchLabel.stringValue = @"";
 
     // use sanity checker for validating preferences
-    NSURL *appPathURL = [self.appPathControl URL];
-    if ([self.sanityChecker isValidAppPathURL:appPathURL])
+    self.sanityChecker.appPathURL = [self.appPathControl URL];
+    if ([self.sanityChecker isValidAppPathURL])
     {
-        self.appBranchLabel.stringValue = [self.sanityChecker gitBranchNameInAppPathURL:appPathURL];
+        self.appBranchLabel.stringValue = [self.sanityChecker gitBranchNameInAppPathURL];
     }
     else
     {
@@ -52,10 +52,10 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
         self.warningLabel.stringValue = @"Warning! Incorrect path to app sources";
     }
 
-    NSURL *scriptsPathURL = [self.scriptsPathControl URL];
-    if ([self.sanityChecker isValidAppPathURL:scriptsPathURL])
+    self.sanityChecker.scriptsPathURL = [self.scriptsPathControl URL];
+    if ([self.sanityChecker isValidAppPathURL])
     {
-        self.scriptsBranchLabel.stringValue = [self.sanityChecker gitBranchNameInAppPathURL:scriptsPathURL];
+        self.scriptsBranchLabel.stringValue = [self.sanityChecker gitBranchNameInScriptsPathURL];
     }
     else
     {

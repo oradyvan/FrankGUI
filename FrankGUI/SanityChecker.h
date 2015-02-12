@@ -10,8 +10,12 @@
 
 @interface SanityChecker : NSObject
 
-- (BOOL)isValidAppPathURL:(NSURL *)appPathURL;
-- (BOOL)isValidScriptsPathURL:(NSURL *)scriptsPathURL;
-- (NSString *)gitBranchNameInAppPathURL:(NSURL *)appPathURL;
+@property (nonatomic, copy) NSURL *appPathURL;
+@property (nonatomic, copy) NSURL *scriptsPathURL;
+
+- (BOOL)isValidAppPathURL;
+- (BOOL)isValidScriptsPathURL;
+- (NSString *)gitBranchNameInAppPathURL;
+- (NSString *)gitBranchNameInScriptsPathURL;
 
 @end

@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSString *gitLaunchPath;
 
 - (void)setupToolsPaths;
+- (NSString *)gitBranchNameInDirectory:(NSString *)directory;
+- (BOOL)isValidRepositoryPathURL:(NSURL *)pathURL;
 
 @end
 
@@ -35,11 +37,6 @@
 {
     // determine path to git tool
     self.gitLaunchPath = [self.executor pathForTool:@"git"];
-}
-
-- (NSString *)gitBranchNameInAppPathURL:(NSURL *)appPathURL
-{
-    return [self gitBranchNameInDirectory:[appPathURL path]];
 }
 
 - (NSString *)gitBranchNameInDirectory:(NSString *)directory
@@ -69,6 +66,16 @@
     return nil;
 }
 
+- (NSString *)gitBranchNameInAppPathURL
+{
+    return [self gitBranchNameInDirectory:[self.appPathURL path]];
+}
+
+- (NSString *)gitBranchNameInScriptsPathURL
+{
+    return [self gitBranchNameInDirectory:[self.scriptsPathURL path]];
+}
+
 - (BOOL)isValidRepositoryPathURL:(NSURL *)pathURL
 {
     // check that the given path points to an existing directory
@@ -89,14 +96,14 @@
     return NO;
 }
 
-- (BOOL)isValidAppPathURL:(NSURL *)appPathURL
+- (BOOL)isValidAppPathURL
 {
-    return [self isValidRepositoryPathURL:appPathURL];
+    return [self isValidRepositoryPathURL:self.appPathURL];
 }
 
-- (BOOL)isValidScriptsPathURL:(NSURL *)scriptsPathURL
+- (BOOL)isValidScriptsPathURL
 {
-    return [self isValidRepositoryPathURL:scriptsPathURL];
+    return [self isValidRepositoryPathURL:self.scriptsPathURL];
 }
 
 @end
