@@ -8,7 +8,24 @@
 
 #import "ConsoleToolExecutor.h"
 
+@interface ConsoleToolExecutor ()
+
+@property (nonatomic, strong) NSString *shellPath; // path to user's shell
+
+@end
+
+
 @implementation ConsoleToolExecutor
+
+- (instancetype)init
+{
+    if (self = [super init])
+    {
+        NSDictionary *environmentDict = [[NSProcessInfo processInfo] environment];
+        self.shellPath = [environmentDict objectForKey:@"SHELL"];
+    }
+    return self;
+}
 
 - (NSString *)outputOfCommand:(NSString *)command inDirectory:(NSString *)directory withArguments:(NSArray *)arguments exitCode:(int *)exitCode
 {
@@ -60,7 +77,7 @@
     {
         NSString *whichTool = [NSString stringWithFormat:@"which %@", toolName];
         NSArray *args = @[@"-l", @"-c", whichTool];
-        return [self outputOfCommand:@"/bin/bash" inDirectory:nil withArguments:args exitCode:NULL];
+        return [self outputOfCommand:self.shellPath inDirectory:nil withArguments:args exitCode:NULL];
     }
     return nil;
 }
