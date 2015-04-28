@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -792,14 +792,32 @@
                                     <outlet property="delegate" destination="9S3-1d-eyq" id="hfq-EY-s6J"/>
                                 </connections>
                             </pathControl>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g24-mz-qy7">
+                                <rect key="frame" x="18" y="88" width="122" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Frank gem version:" id="KFT-O1-vh4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PlC-CD-diP">
+                                <rect key="frame" x="176" y="88" width="256" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ngti-frank-cucumber" id="h2R-XS-R1s">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="g24-mz-qy7" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" id="0YW-iC-t61"/>
                             <constraint firstItem="Cl0-qG-gqm" firstAttribute="centerY" secondItem="Ni7-eB-xun" secondAttribute="centerY" id="3jc-9v-oNh"/>
                             <constraint firstItem="uHd-gB-L8d" firstAttribute="top" secondItem="gbu-Zy-bkG" secondAttribute="bottom" constant="8" symbolic="YES" id="48u-Jf-Mvy"/>
                             <constraint firstAttribute="trailing" secondItem="TXQ-Ep-EaU" secondAttribute="trailing" constant="20" symbolic="YES" id="6m1-tr-FnQ"/>
                             <constraint firstItem="TXQ-Ep-EaU" firstAttribute="leading" secondItem="Cl0-qG-gqm" secondAttribute="leading" id="747-cw-1n1"/>
                             <constraint firstItem="Vlh-aE-JMg" firstAttribute="top" secondItem="5yc-gP-MvD" secondAttribute="top" constant="20" symbolic="YES" id="8EF-4K-QuZ"/>
                             <constraint firstItem="uHd-gB-L8d" firstAttribute="baseline" secondItem="HCK-dv-sCV" secondAttribute="baseline" id="9lE-KT-8HL"/>
+                            <constraint firstItem="HCK-dv-sCV" firstAttribute="leading" secondItem="PlC-CD-diP" secondAttribute="leading" id="AGH-jd-9nJ"/>
                             <constraint firstItem="Ni7-eB-xun" firstAttribute="top" secondItem="Vlh-aE-JMg" secondAttribute="bottom" constant="24" id="Bu2-1V-JZq"/>
                             <constraint firstAttribute="trailing" secondItem="eTf-Aq-wqw" secondAttribute="trailing" constant="20" symbolic="YES" id="DIl-ZW-D7v"/>
                             <constraint firstItem="gbu-Zy-bkG" firstAttribute="top" secondItem="Ypi-g7-J73" secondAttribute="bottom" constant="24" id="Fkd-GY-fRT"/>
@@ -811,9 +829,12 @@
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="baseline" secondItem="eTf-Aq-wqw" secondAttribute="baseline" id="Qdm-E3-J1M"/>
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="T03-XF-UUT"/>
                             <constraint firstAttribute="trailing" secondItem="Cl0-qG-gqm" secondAttribute="trailing" constant="20" symbolic="YES" id="Vnp-l9-cdL"/>
+                            <constraint firstItem="TXQ-Ep-EaU" firstAttribute="trailing" secondItem="PlC-CD-diP" secondAttribute="trailing" id="WdM-Xu-OjP"/>
+                            <constraint firstItem="g24-mz-qy7" firstAttribute="baseline" secondItem="PlC-CD-diP" secondAttribute="baseline" id="YR8-ns-fKr"/>
                             <constraint firstAttribute="trailing" secondItem="Vlh-aE-JMg" secondAttribute="trailing" constant="20" symbolic="YES" id="a38-WY-ro3"/>
                             <constraint firstItem="uHd-gB-L8d" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="a79-aI-voW"/>
                             <constraint firstItem="Vlh-aE-JMg" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="fhs-2W-IM7"/>
+                            <constraint firstItem="g24-mz-qy7" firstAttribute="top" secondItem="uHd-gB-L8d" secondAttribute="bottom" constant="24" id="j1R-Wh-XKS"/>
                             <constraint firstItem="TXQ-Ep-EaU" firstAttribute="centerY" secondItem="gbu-Zy-bkG" secondAttribute="centerY" id="jA4-ho-1AT"/>
                             <constraint firstItem="TXQ-Ep-EaU" firstAttribute="leading" secondItem="HCK-dv-sCV" secondAttribute="leading" id="vYd-uI-ieJ"/>
                         </constraints>
@@ -821,6 +842,7 @@
                     <connections>
                         <outlet property="appBranchLabel" destination="eTf-Aq-wqw" id="MAv-fo-joO"/>
                         <outlet property="appPathControl" destination="Cl0-qG-gqm" id="ORG-0C-d7x"/>
+                        <outlet property="gemVersionLabel" destination="PlC-CD-diP" id="mEz-nO-nB8"/>
                         <outlet property="scriptsBranchLabel" destination="HCK-dv-sCV" id="Wk1-zt-tfl"/>
                         <outlet property="scriptsPathControl" destination="TXQ-Ep-EaU" id="f7A-83-epS"/>
                         <outlet property="warningLabel" destination="Vlh-aE-JMg" id="Sfn-HD-Xg1"/>

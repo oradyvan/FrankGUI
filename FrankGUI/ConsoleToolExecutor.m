@@ -50,9 +50,17 @@
 
 - (NSString *)pathForTool:(NSString *)toolName
 {
+    // invoke command like this:
+    //
+    // /bin/sh -l -c 'which <toolName>'
+    //
+    // so that the shell is used as login shell
+
     if ([toolName length] > 0)
     {
-        return [self outputOfCommand:@"/usr/bin/which" inDirectory:nil withArguments:@[toolName] exitCode:NULL];
+        NSString *whichTool = [NSString stringWithFormat:@"which %@", toolName];
+        NSArray *args = @[@"-l", @"-c", whichTool];
+        return [self outputOfCommand:@"/bin/bash" inDirectory:nil withArguments:args exitCode:NULL];
     }
     return nil;
 }

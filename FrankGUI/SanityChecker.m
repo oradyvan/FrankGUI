@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *gitLaunchPath;
 @property (nonatomic, strong) NSString *gitBranchNameInAppPathURL;
 @property (nonatomic, strong) NSString *gitBranchNameInScriptsPathURL;
+@property (nonatomic, strong) NSString *gemLaunchPath;
 
 - (void)setupToolsPaths;
 - (NSString *)gitBranchNameInDirectory:(NSString *)directory;
@@ -39,6 +40,9 @@
 {
     // determine path to git tool
     self.gitLaunchPath = [self.executor pathForTool:@"git"];
+
+    // determine path to gem tool
+    self.gemLaunchPath = [self.executor pathForTool:@"gem"];
 }
 
 - (NSString *)gitBranchNameInDirectory:(NSString *)directory
@@ -117,6 +121,55 @@
 {
     // both branches for app and for scripts must be the same
     return [self.gitBranchNameInAppPathURL isEqualToString:self.gitBranchNameInScriptsPathURL];
+}
+
+- (NSString *)frankCucumberGemName
+{
+    return @"ngti-frank-cucumber";
+}
+
+- (NSString *)frankCucumberGemVersion
+{
+    NSArray *args = @[@"list", @"-l", self.frankCucumberGemName];
+    int exitCode = -1;
+    NSString *output = [self.executor outputOfCommand:self.gemLaunchPath inDirectory:nil withArguments:args exitCode:&exitCode];
+
+    if (0 == exitCode && [output length] > 0)
+    {
+        return output;
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+- (BOOL)isValidFrankCucumberGemVersion
+{
+    // get the full name and version of the gem
+    NSString *gemString = self.frankCucumberGemVersion;
+    NSArray *gemStringParts = [gemString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()"]];
+
+    if (3 != [gemStringParts count])
+    {
+        // expect gem string in format <name> (<version>)
+        return NO;
+    }
+    
+    NSArray *versionParts = [gemStringParts[1] componentsSeparatedByString:@"."];
+    if (3 != [versionParts count])
+    {
+        // expect version components like <major>.<minor>.<build>
+        return NO;
+    }
+    
+    // expect versions of 1.3.x
+    if ([versionParts[0] intValue] < 1 || [versionParts[1] intValue] < 3)
+    {
+        return NO;
+    }
+
+    return YES;
 }
 
 @end

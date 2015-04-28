@@ -14,9 +14,12 @@
 @property (nonatomic, copy) NSURL *scriptsPathURL;
 @property (nonatomic, readonly) NSString *gitBranchNameInAppPathURL;
 @property (nonatomic, readonly) NSString *gitBranchNameInScriptsPathURL;
+@property (nonatomic, readonly) NSString *frankCucumberGemName;
+@property (nonatomic, readonly) NSString *frankCucumberGemVersion;
 
 - (BOOL)isValidAppPathURL;
 - (BOOL)isValidScriptsPathURL;
 - (BOOL)areTheSameBranchesInAppAndInScriptsPaths;
+- (BOOL)isValidFrankCucumberGemVersion;
 
 @end

@@ -27,6 +27,7 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 @property (nonatomic, weak) IBOutlet NSTextField *appBranchLabel;
 @property (nonatomic, weak) IBOutlet NSPathControl *scriptsPathControl;
 @property (nonatomic, weak) IBOutlet NSTextField *scriptsBranchLabel;
+@property (nonatomic, weak) IBOutlet NSTextField *gemVersionLabel;
 
 @property (nonatomic, weak) SanityChecker *sanityChecker;
 
@@ -46,6 +47,7 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     [self warnLevel:WarnLevelOK message:@"Validating…"];
     [self setText:nil inTextField:self.appBranchLabel];
     [self setText:nil inTextField:self.scriptsBranchLabel];
+    [self setText:nil inTextField:self.gemVersionLabel];
 
     // use sanity checker for validating preferences
     self.sanityChecker.appPathURL = [self.appPathControl URL];
@@ -65,6 +67,16 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
         [self warnLevel:WarnLevelError message:@"Error! Incorrect path to Frank scripts"];
         return;
     }
+
+    // verifying correctness of "ngti-frank-cucumber" gem version
+    NSString *gemVersion = self.sanityChecker.frankCucumberGemVersion;
+    if (nil == gemVersion || ![self.sanityChecker isValidFrankCucumberGemVersion])
+    {
+        NSString *message = [NSString stringWithFormat:@"Error! Cannot determine version of gem '%@'! Make sure it is installed.", self.sanityChecker.frankCucumberGemName];
+        [self warnLevel:WarnLevelError message:message];
+        return;
+    }
+    [self setText:gemVersion inTextField:self.gemVersionLabel];
 
     // verifying correctness of both branches
     if (![self.sanityChecker areTheSameBranchesInAppAndInScriptsPaths])
