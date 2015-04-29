@@ -21,6 +21,11 @@
 - (NSString *)gitBranchNameInDirectory:(NSString *)directory;
 - (BOOL)isValidRepositoryPathURL:(NSURL *)pathURL;
 
+- (BOOL)isValidAppPathURL;
+- (BOOL)isValidScriptsPathURL;
+- (BOOL)areTheSameBranchesInAppAndInScriptsPaths;
+- (BOOL)isValidFrankCucumberGemVersion;
+
 @end
 
 @implementation SanityChecker
@@ -170,6 +175,47 @@
     }
 
     return YES;
+}
+
+- (void)validate
+{
+    [self.delegate validatingDidStart];
+
+    if (![self isValidAppPathURL])
+    {
+        [self.delegate validatingWarnLevel:WarnLevelError message:@"Error! Incorrect path to app sources"];
+        [self.delegate validatingDidFinish];
+        return;
+    }
+
+    if (![self isValidScriptsPathURL])
+    {
+        [self.delegate validatingWarnLevel:WarnLevelError message:@"Error! Incorrect path to Frank scripts"];
+        [self.delegate validatingDidFinish];
+        return;
+    }
+
+    // verifying correctness of "ngti-frank-cucumber" gem version
+    NSString *gemVersion = self.frankCucumberGemVersion;
+    if (nil == gemVersion || ![self isValidFrankCucumberGemVersion])
+    {
+        NSString *message = [NSString stringWithFormat:@"Error! Cannot determine version of gem '%@'! Make sure it is installed.", self.frankCucumberGemName];
+        [self.delegate validatingWarnLevel:WarnLevelError message:message];
+        [self.delegate validatingDidFinish];
+        return;
+    }
+
+    // verifying correctness of both branches
+    if (![self areTheSameBranchesInAppAndInScriptsPaths])
+    {
+        [self.delegate validatingWarnLevel:WarnLevelIssue message:@"Warning! App has checked out of branch different from Frank scripts branch.\nMake sure you understand what you are doing!"];
+        [self.delegate validatingDidFinish];
+        return;
+    }
+
+    // if we got here, all the checks have passed
+    [self.delegate validatingWarnLevel:WarnLevelOK message:@"Ready to run!"];
+    [self.delegate validatingDidFinish];
 }
 
 @end

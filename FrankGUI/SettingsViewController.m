@@ -10,17 +10,10 @@
 #import "AppDelegate.h"
 #import "SanityChecker.h"
 
-typedef enum
-{
-    WarnLevelOK,
-    WarnLevelIssue,
-    WarnLevelError
-} WarnLevel;
-
 static NSString *const kAppPathURLKey     = @"AppPathURLKey";
 static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 
-@interface SettingsViewController ()
+@interface SettingsViewController () <SanityCheckerDelegate>
 
 @property (nonatomic, weak) IBOutlet NSTextField *warningLabel;
 @property (nonatomic, weak) IBOutlet NSPathControl *appPathControl;
@@ -33,7 +26,6 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 
 - (IBAction)appPathControlValueChanged:(id)sender;
 - (IBAction)scriptsPathControlValueChanged:(id)sender;
-- (void)validateSettings;
 - (void)warnLevel:(WarnLevel)warnLevel message:(NSString *)message;
 - (void)setText:(NSString *)text inTextField:(NSTextField *)textField;
 
@@ -41,53 +33,6 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 
 
 @implementation SettingsViewController
-
-- (void)validateSettings
-{
-    [self warnLevel:WarnLevelOK message:@"Validating…"];
-    [self setText:nil inTextField:self.appBranchLabel];
-    [self setText:nil inTextField:self.scriptsBranchLabel];
-    [self setText:nil inTextField:self.gemVersionLabel];
-
-    // use sanity checker for validating preferences
-    self.sanityChecker.appPathURL = [self.appPathControl URL];
-    [self setText:[self.sanityChecker gitBranchNameInAppPathURL] inTextField:self.appBranchLabel];
-
-    self.sanityChecker.scriptsPathURL = [self.scriptsPathControl URL];
-    [self setText:[self.sanityChecker gitBranchNameInScriptsPathURL] inTextField:self.scriptsBranchLabel];
-
-    if (![self.sanityChecker isValidAppPathURL])
-    {
-        [self warnLevel:WarnLevelError message:@"Error! Incorrect path to app sources"];
-        return;
-    }
-
-    if (![self.sanityChecker isValidScriptsPathURL])
-    {
-        [self warnLevel:WarnLevelError message:@"Error! Incorrect path to Frank scripts"];
-        return;
-    }
-
-    // verifying correctness of "ngti-frank-cucumber" gem version
-    NSString *gemVersion = self.sanityChecker.frankCucumberGemVersion;
-    if (nil == gemVersion || ![self.sanityChecker isValidFrankCucumberGemVersion])
-    {
-        NSString *message = [NSString stringWithFormat:@"Error! Cannot determine version of gem '%@'! Make sure it is installed.", self.sanityChecker.frankCucumberGemName];
-        [self warnLevel:WarnLevelError message:message];
-        return;
-    }
-    [self setText:gemVersion inTextField:self.gemVersionLabel];
-
-    // verifying correctness of both branches
-    if (![self.sanityChecker areTheSameBranchesInAppAndInScriptsPaths])
-    {
-        [self warnLevel:WarnLevelIssue message:@"Warning! App has checked out of branch different from Frank scripts branch.\nMake sure you understand what you are doing!"];
-        return;
-    }
-
-    // if we got here, all the checks have passed
-    [self warnLevel:WarnLevelOK message:@"Ready to run!"];
-}
 
 - (void)warnLevel:(WarnLevel)warnLevel message:(NSString *)message
 {
@@ -135,9 +80,10 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 
     // prepare sanity checker for use in this view controller
     self.sanityChecker = [(AppDelegate *)[[NSApplication sharedApplication] delegate] sanityChecker];
+    self.sanityChecker.delegate = self;
 
     // perform initial validation of settings
-    [self validateSettings];
+    [self.sanityChecker validate];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -158,7 +104,7 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     // Store the selected path in user preferences
     [[NSUserDefaults standardUserDefaults] setURL:pathURL forKey:kAppPathURLKey];
 
-    [self validateSettings];
+    [self.sanityChecker validate];
 }
 
 - (IBAction)scriptsPathControlValueChanged:(id)sender
@@ -173,7 +119,34 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     // Store the selected path in user preferences
     [[NSUserDefaults standardUserDefaults] setURL:pathURL forKey:kScriptsPathURLKey];
     
-    [self validateSettings];
+    [self.sanityChecker validate];
+}
+
+#pragma mark - SanityCheckerDelegate methods
+
+- (void)validatingDidStart
+{
+    // initial clean up of labels
+    [self warnLevel:WarnLevelOK message:@"Validating…"];
+    [self setText:nil inTextField:self.appBranchLabel];
+    [self setText:nil inTextField:self.scriptsBranchLabel];
+    [self setText:nil inTextField:self.gemVersionLabel];
+
+    // use sanity checker for validating preferences
+    self.sanityChecker.appPathURL = [self.appPathControl URL];
+    self.sanityChecker.scriptsPathURL = [self.scriptsPathControl URL];
+}
+
+- (void)validatingDidFinish
+{
+    [self setText:[self.sanityChecker gitBranchNameInAppPathURL] inTextField:self.appBranchLabel];
+    [self setText:[self.sanityChecker gitBranchNameInScriptsPathURL] inTextField:self.scriptsBranchLabel];
+    [self setText:self.sanityChecker.frankCucumberGemVersion inTextField:self.gemVersionLabel];
+}
+
+- (void)validatingWarnLevel:(WarnLevel)warnLevel message:(NSString *)message
+{
+    [self warnLevel:warnLevel message:message];
 }
 
 @end
