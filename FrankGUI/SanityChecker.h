@@ -55,6 +55,7 @@ typedef enum
 @property (nonatomic, readonly) NSString *gitBranchNameInScriptsPathURL;
 @property (nonatomic, readonly) NSString *frankCucumberGemName;
 @property (nonatomic, readonly) NSString *frankCucumberGemVersion;
+@property (nonatomic, readonly) NSString *frankCucumberGemPath;
 
 - (void)validate;
 

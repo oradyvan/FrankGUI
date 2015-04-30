@@ -26,6 +26,7 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 
 - (IBAction)appPathControlValueChanged:(id)sender;
 - (IBAction)scriptsPathControlValueChanged:(id)sender;
+- (IBAction)revealGemDirectoryInFinder:(id)sender;
 - (void)warnLevel:(WarnLevel)warnLevel message:(NSString *)message;
 - (void)setText:(NSString *)text inTextField:(NSTextField *)textField;
 
@@ -120,6 +121,14 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     [[NSUserDefaults standardUserDefaults] setURL:pathURL forKey:kScriptsPathURLKey];
     
     [self.sanityChecker validate];
+}
+
+- (IBAction)revealGemDirectoryInFinder:(id)sender
+{
+    // determine path to gem files based on current Ruby settings
+    NSString *path = self.sanityChecker.frankCucumberGemPath;
+    NSURL *url = [NSURL fileURLWithPath:path];
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[url]];
 }
 
 #pragma mark - SanityCheckerDelegate methods

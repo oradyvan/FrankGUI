@@ -149,6 +149,50 @@
     }
 }
 
+- (NSString *)frankCucumberGemDirectoryName
+{
+    NSString *gemString = self.frankCucumberGemVersion;
+    NSArray *gemStringParts = [gemString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()"]];
+
+    return [NSString stringWithFormat:@"%@-%@", self.frankCucumberGemName, gemStringParts[1]];
+}
+
+- (NSString *)frankCucumberGemPath
+{
+    // obtain search paths of gems
+    NSArray *arguments = @[@"environment", @"gempath"];
+    int exitCode = -1;
+    NSString *output = [self.executor outputOfCommand:self.gemLaunchPath inDirectory:nil withArguments:arguments exitCode:&exitCode];
+
+    // on error, return nil
+    if (nil == output || 0 != exitCode)
+    {
+        return nil;
+    }
+
+    NSArray *paths = [output componentsSeparatedByString:@":"];
+    // begin searching through paths for the paritcular directory
+    NSString *result = nil;
+    NSString *gemDirName = self.frankCucumberGemDirectoryName;
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    for (NSString *path in paths)
+    {
+        // construct candidate directory of gems common base directory and particular gem name
+        NSString *gemDir = [NSString stringWithFormat:@"%@/gems/%@", path, gemDirName];
+        BOOL isDirectory = NO;
+        if ([fileMan fileExistsAtPath:gemDir isDirectory:&isDirectory])
+        {
+            if (isDirectory)
+            {
+                result = gemDir;
+                break;
+            }
+        }
+    }
+
+    return result;
+}
+
 - (BOOL)isValidFrankCucumberGemVersion
 {
     // get the full name and version of the gem

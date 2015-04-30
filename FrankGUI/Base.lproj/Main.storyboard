@@ -801,35 +801,47 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PlC-CD-diP">
-                                <rect key="frame" x="176" y="88" width="256" height="17"/>
+                                <rect key="frame" x="144" y="88" width="152" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ngti-frank-cucumber" id="h2R-XS-R1s">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KMn-5w-ktZ">
+                                <rect key="frame" x="296" y="77" width="140" height="32"/>
+                                <buttonCell key="cell" type="push" title="Reveal In Finder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wlU-B8-cJy">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="revealGemDirectoryInFinder:" target="9S3-1d-eyq" id="Cnf-IG-tJt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="g24-mz-qy7" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" id="0YW-iC-t61"/>
+                            <constraint firstItem="KMn-5w-ktZ" firstAttribute="trailing" secondItem="TXQ-Ep-EaU" secondAttribute="trailing" id="3bj-Q9-K4K"/>
                             <constraint firstItem="Cl0-qG-gqm" firstAttribute="centerY" secondItem="Ni7-eB-xun" secondAttribute="centerY" id="3jc-9v-oNh"/>
                             <constraint firstItem="uHd-gB-L8d" firstAttribute="top" secondItem="gbu-Zy-bkG" secondAttribute="bottom" constant="8" symbolic="YES" id="48u-Jf-Mvy"/>
                             <constraint firstAttribute="trailing" secondItem="TXQ-Ep-EaU" secondAttribute="trailing" constant="20" symbolic="YES" id="6m1-tr-FnQ"/>
                             <constraint firstItem="TXQ-Ep-EaU" firstAttribute="leading" secondItem="Cl0-qG-gqm" secondAttribute="leading" id="747-cw-1n1"/>
                             <constraint firstItem="Vlh-aE-JMg" firstAttribute="top" secondItem="5yc-gP-MvD" secondAttribute="top" constant="20" symbolic="YES" id="8EF-4K-QuZ"/>
                             <constraint firstItem="uHd-gB-L8d" firstAttribute="baseline" secondItem="HCK-dv-sCV" secondAttribute="baseline" id="9lE-KT-8HL"/>
-                            <constraint firstItem="HCK-dv-sCV" firstAttribute="leading" secondItem="PlC-CD-diP" secondAttribute="leading" id="AGH-jd-9nJ"/>
                             <constraint firstItem="Ni7-eB-xun" firstAttribute="top" secondItem="Vlh-aE-JMg" secondAttribute="bottom" constant="24" id="Bu2-1V-JZq"/>
                             <constraint firstAttribute="trailing" secondItem="eTf-Aq-wqw" secondAttribute="trailing" constant="20" symbolic="YES" id="DIl-ZW-D7v"/>
                             <constraint firstItem="gbu-Zy-bkG" firstAttribute="top" secondItem="Ypi-g7-J73" secondAttribute="bottom" constant="24" id="Fkd-GY-fRT"/>
+                            <constraint firstItem="KMn-5w-ktZ" firstAttribute="leading" secondItem="PlC-CD-diP" secondAttribute="trailing" constant="8" symbolic="YES" id="JOb-EB-vCE"/>
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="top" secondItem="Ni7-eB-xun" secondAttribute="bottom" constant="8" symbolic="YES" id="JoG-QZ-KVi"/>
                             <constraint firstItem="TXQ-Ep-EaU" firstAttribute="leading" secondItem="gbu-Zy-bkG" secondAttribute="trailing" constant="8" symbolic="YES" id="Mfh-Nc-3Dr"/>
                             <constraint firstItem="gbu-Zy-bkG" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="Nx5-AH-cY5"/>
                             <constraint firstItem="Ni7-eB-xun" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="P5u-CR-rJw"/>
+                            <constraint firstItem="PlC-CD-diP" firstAttribute="leading" secondItem="g24-mz-qy7" secondAttribute="trailing" constant="8" symbolic="YES" id="Pb8-CC-2gs"/>
                             <constraint firstItem="eTf-Aq-wqw" firstAttribute="leading" secondItem="HCK-dv-sCV" secondAttribute="leading" id="PoL-VT-1yr"/>
+                            <constraint firstItem="KMn-5w-ktZ" firstAttribute="baseline" secondItem="PlC-CD-diP" secondAttribute="baseline" constant="1" id="QRj-Rb-hA4"/>
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="baseline" secondItem="eTf-Aq-wqw" secondAttribute="baseline" id="Qdm-E3-J1M"/>
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="T03-XF-UUT"/>
                             <constraint firstAttribute="trailing" secondItem="Cl0-qG-gqm" secondAttribute="trailing" constant="20" symbolic="YES" id="Vnp-l9-cdL"/>
-                            <constraint firstItem="TXQ-Ep-EaU" firstAttribute="trailing" secondItem="PlC-CD-diP" secondAttribute="trailing" id="WdM-Xu-OjP"/>
                             <constraint firstItem="g24-mz-qy7" firstAttribute="baseline" secondItem="PlC-CD-diP" secondAttribute="baseline" id="YR8-ns-fKr"/>
                             <constraint firstAttribute="trailing" secondItem="Vlh-aE-JMg" secondAttribute="trailing" constant="20" symbolic="YES" id="a38-WY-ro3"/>
                             <constraint firstItem="uHd-gB-L8d" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="a79-aI-voW"/>
