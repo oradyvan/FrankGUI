@@ -705,11 +705,11 @@
             <objects>
                 <viewController title="Settings" id="9S3-1d-eyq" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" id="5yc-gP-MvD">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="608" height="405"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vlh-aE-JMg">
-                                <rect key="frame" x="18" y="261" width="414" height="19"/>
+                                <rect key="frame" x="18" y="366" width="572" height="19"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="Warning" id="GTi-dt-stH">
                                     <font key="font" metaFont="systemBold" size="16"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -717,7 +717,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ni7-eB-xun">
-                                <rect key="frame" x="18" y="220" width="99" height="17"/>
+                                <rect key="frame" x="18" y="325" width="99" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="App repository:" id="L61-td-uC2">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -725,7 +725,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ypi-g7-J73">
-                                <rect key="frame" x="18" y="195" width="80" height="17"/>
+                                <rect key="frame" x="18" y="300" width="80" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="App branch:" id="zzM-fx-iIB">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -733,7 +733,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eTf-Aq-wqw">
-                                <rect key="frame" x="176" y="195" width="256" height="17"/>
+                                <rect key="frame" x="176" y="300" width="414" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="master" id="qWI-nf-ZIS">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -741,7 +741,7 @@
                                 </textFieldCell>
                             </textField>
                             <pathControl horizontalHuggingPriority="249" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cl0-qG-gqm">
-                                <rect key="frame" x="175" y="215" width="258" height="26"/>
+                                <rect key="frame" x="175" y="320" width="416" height="26"/>
                                 <pathCell key="cell" selectable="YES" editable="YES" alignment="left" placeholderString="" pathStyle="popUp" id="VT3-Mb-fDT">
                                     <font key="font" metaFont="system"/>
                                     <url key="url" string="file:///Users/"/>
@@ -755,7 +755,7 @@
                                 </connections>
                             </pathControl>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gbu-Zy-bkG">
-                                <rect key="frame" x="18" y="154" width="154" height="17"/>
+                                <rect key="frame" x="18" y="259" width="154" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Frank scripts repository:" id="Pl7-ke-puS">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -763,7 +763,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uHd-gB-L8d">
-                                <rect key="frame" x="18" y="129" width="135" height="17"/>
+                                <rect key="frame" x="18" y="234" width="135" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Frank scripts branch:" id="Xb9-CE-PUi">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -771,7 +771,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HCK-dv-sCV">
-                                <rect key="frame" x="176" y="129" width="41" height="17"/>
+                                <rect key="frame" x="176" y="234" width="41" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="detail" id="isp-vK-lb8">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -779,7 +779,7 @@
                                 </textFieldCell>
                             </textField>
                             <pathControl horizontalHuggingPriority="249" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TXQ-Ep-EaU">
-                                <rect key="frame" x="175" y="149" width="258" height="26"/>
+                                <rect key="frame" x="175" y="254" width="416" height="26"/>
                                 <pathCell key="cell" selectable="YES" editable="YES" alignment="left" placeholderString="" pathStyle="popUp" id="Og3-Yh-Ua6">
                                     <font key="font" metaFont="system"/>
                                     <url key="url" string="file:///Users/"/>
@@ -793,7 +793,7 @@
                                 </connections>
                             </pathControl>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g24-mz-qy7">
-                                <rect key="frame" x="18" y="88" width="122" height="17"/>
+                                <rect key="frame" x="18" y="193" width="122" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Frank gem version:" id="KFT-O1-vh4">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -801,7 +801,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PlC-CD-diP">
-                                <rect key="frame" x="144" y="88" width="152" height="17"/>
+                                <rect key="frame" x="144" y="193" width="310" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ngti-frank-cucumber" id="h2R-XS-R1s">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -809,7 +809,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KMn-5w-ktZ">
-                                <rect key="frame" x="296" y="77" width="140" height="32"/>
+                                <rect key="frame" x="454" y="182" width="140" height="32"/>
                                 <buttonCell key="cell" type="push" title="Reveal In Finder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wlU-B8-cJy">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -818,9 +818,32 @@
                                     <action selector="revealGemDirectoryInFinder:" target="9S3-1d-eyq" id="Cnf-IG-tJt"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ntg-ei-q4y">
+                                <rect key="frame" x="18" y="152" width="103" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Server platform:" id="hVi-4B-kD4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4X2-Mi-hrx">
+                                <rect key="frame" x="144" y="146" width="73" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="2Lj-ob-zHs" id="Dgk-Cw-lbe">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="oSI-yh-qJE">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="2Lj-ob-zHs"/>
+                                            <menuItem title="Item 2" id="mYL-oY-v2A"/>
+                                            <menuItem title="Item 3" id="t96-op-2az"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="g24-mz-qy7" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" id="0YW-iC-t61"/>
+                            <constraint firstItem="Ntg-ei-q4y" firstAttribute="top" secondItem="g24-mz-qy7" secondAttribute="bottom" constant="24" id="29N-hr-edS"/>
                             <constraint firstItem="KMn-5w-ktZ" firstAttribute="trailing" secondItem="TXQ-Ep-EaU" secondAttribute="trailing" id="3bj-Q9-K4K"/>
                             <constraint firstItem="Cl0-qG-gqm" firstAttribute="centerY" secondItem="Ni7-eB-xun" secondAttribute="centerY" id="3jc-9v-oNh"/>
                             <constraint firstItem="uHd-gB-L8d" firstAttribute="top" secondItem="gbu-Zy-bkG" secondAttribute="bottom" constant="8" symbolic="YES" id="48u-Jf-Mvy"/>
@@ -835,11 +858,14 @@
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="top" secondItem="Ni7-eB-xun" secondAttribute="bottom" constant="8" symbolic="YES" id="JoG-QZ-KVi"/>
                             <constraint firstItem="TXQ-Ep-EaU" firstAttribute="leading" secondItem="gbu-Zy-bkG" secondAttribute="trailing" constant="8" symbolic="YES" id="Mfh-Nc-3Dr"/>
                             <constraint firstItem="gbu-Zy-bkG" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="Nx5-AH-cY5"/>
+                            <constraint firstItem="g24-mz-qy7" firstAttribute="leading" secondItem="Ntg-ei-q4y" secondAttribute="leading" id="OYd-7L-llS"/>
                             <constraint firstItem="Ni7-eB-xun" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="P5u-CR-rJw"/>
+                            <constraint firstItem="PlC-CD-diP" firstAttribute="leading" secondItem="4X2-Mi-hrx" secondAttribute="leading" id="PHx-OT-jPm"/>
                             <constraint firstItem="PlC-CD-diP" firstAttribute="leading" secondItem="g24-mz-qy7" secondAttribute="trailing" constant="8" symbolic="YES" id="Pb8-CC-2gs"/>
                             <constraint firstItem="eTf-Aq-wqw" firstAttribute="leading" secondItem="HCK-dv-sCV" secondAttribute="leading" id="PoL-VT-1yr"/>
                             <constraint firstItem="KMn-5w-ktZ" firstAttribute="baseline" secondItem="PlC-CD-diP" secondAttribute="baseline" constant="1" id="QRj-Rb-hA4"/>
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="baseline" secondItem="eTf-Aq-wqw" secondAttribute="baseline" id="Qdm-E3-J1M"/>
+                            <constraint firstItem="4X2-Mi-hrx" firstAttribute="baseline" secondItem="Ntg-ei-q4y" secondAttribute="baseline" id="Siz-uI-IOY"/>
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="T03-XF-UUT"/>
                             <constraint firstAttribute="trailing" secondItem="Cl0-qG-gqm" secondAttribute="trailing" constant="20" symbolic="YES" id="Vnp-l9-cdL"/>
                             <constraint firstItem="g24-mz-qy7" firstAttribute="baseline" secondItem="PlC-CD-diP" secondAttribute="baseline" id="YR8-ns-fKr"/>
@@ -855,6 +881,7 @@
                         <outlet property="appBranchLabel" destination="eTf-Aq-wqw" id="MAv-fo-joO"/>
                         <outlet property="appPathControl" destination="Cl0-qG-gqm" id="ORG-0C-d7x"/>
                         <outlet property="gemVersionLabel" destination="PlC-CD-diP" id="mEz-nO-nB8"/>
+                        <outlet property="platformPopUp" destination="Dgk-Cw-lbe" id="A54-D8-4pW"/>
                         <outlet property="scriptsBranchLabel" destination="HCK-dv-sCV" id="Wk1-zt-tfl"/>
                         <outlet property="scriptsPathControl" destination="TXQ-Ep-EaU" id="f7A-83-epS"/>
                         <outlet property="warningLabel" destination="Vlh-aE-JMg" id="Sfn-HD-Xg1"/>
@@ -862,7 +889,7 @@
                 </viewController>
                 <customObject id="Wcb-3C-ZbN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="738" y="967"/>
+            <point key="canvasLocation" x="817" y="1003.5"/>
         </scene>
     </scenes>
 </document>

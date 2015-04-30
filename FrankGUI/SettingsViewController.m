@@ -21,6 +21,7 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 @property (nonatomic, weak) IBOutlet NSPathControl *scriptsPathControl;
 @property (nonatomic, weak) IBOutlet NSTextField *scriptsBranchLabel;
 @property (nonatomic, weak) IBOutlet NSTextField *gemVersionLabel;
+@property (nonatomic, weak) IBOutlet NSPopUpButtonCell *platformPopUp;
 
 @property (nonatomic, weak) SanityChecker *sanityChecker;
 
@@ -140,6 +141,7 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     [self setText:nil inTextField:self.appBranchLabel];
     [self setText:nil inTextField:self.scriptsBranchLabel];
     [self setText:nil inTextField:self.gemVersionLabel];
+    [self.platformPopUp removeAllItems];
 
     // use sanity checker for validating preferences
     self.sanityChecker.appPathURL = [self.appPathControl URL];
@@ -151,6 +153,9 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     [self setText:[self.sanityChecker gitBranchNameInAppPathURL] inTextField:self.appBranchLabel];
     [self setText:[self.sanityChecker gitBranchNameInScriptsPathURL] inTextField:self.scriptsBranchLabel];
     [self setText:self.sanityChecker.frankCucumberGemVersion inTextField:self.gemVersionLabel];
+
+    NSArray *platforms = [self.sanityChecker listOfAvailablePlatforms];
+    [self.platformPopUp addItemsWithTitles:platforms];
 }
 
 - (void)validatingWarnLevel:(WarnLevel)warnLevel message:(NSString *)message

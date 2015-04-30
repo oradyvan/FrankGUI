@@ -58,5 +58,6 @@ typedef enum
 @property (nonatomic, readonly) NSString *frankCucumberGemPath;
 
 - (void)validate;
+- (NSArray *)listOfAvailablePlatforms;
 
 @end

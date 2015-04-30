@@ -8,6 +8,7 @@
 
 #import "SanityChecker.h"
 #import "ConsoleToolExecutor.h"
+#import "Constants.h"
 
 @interface SanityChecker ()
 
@@ -268,6 +269,26 @@
     // if we got here, all the checks have passed
     [self.delegate validatingWarnLevel:WarnLevelOK message:@"Ready to run!"];
     [self.delegate validatingDidFinish];
+}
+
+- (NSArray *)listOfAvailablePlatforms
+{
+    NSString *envDir = [[self.scriptsPathURL relativePath] stringByAppendingPathComponent:kFrankSkeletonEnv];
+
+    NSMutableArray *result = [NSMutableArray new];
+
+    NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtPath:envDir];
+    for (NSString *file in enumerator)
+    {
+        // only include those ending with .sh
+        if ([[file pathExtension] isEqualToString:@"sh"])
+        {
+            NSString *baseName = [[file stringByDeletingPathExtension] uppercaseString];
+            [result addObject:baseName];
+        }
+    }
+
+    return result;
 }
 
 @end
