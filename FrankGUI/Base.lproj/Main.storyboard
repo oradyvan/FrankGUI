@@ -708,8 +708,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="608" height="405"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vlh-aE-JMg">
-                                <rect key="frame" x="18" y="366" width="572" height="19"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vlh-aE-JMg">
+                                <rect key="frame" x="18" y="366" width="544" height="19"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="Warning" id="GTi-dt-stH">
                                     <font key="font" metaFont="systemBold" size="16"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -840,6 +840,19 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
+                            <button horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="NxG-q9-OSo">
+                                <rect key="frame" x="562" y="357" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Z21-y0-ZDo"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fbB-2D-69f">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="reloadSettings:" target="9S3-1d-eyq" id="l5d-ZB-Fv4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="g24-mz-qy7" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" id="0YW-iC-t61"/>
@@ -849,13 +862,16 @@
                             <constraint firstItem="uHd-gB-L8d" firstAttribute="top" secondItem="gbu-Zy-bkG" secondAttribute="bottom" constant="8" symbolic="YES" id="48u-Jf-Mvy"/>
                             <constraint firstAttribute="trailing" secondItem="TXQ-Ep-EaU" secondAttribute="trailing" constant="20" symbolic="YES" id="6m1-tr-FnQ"/>
                             <constraint firstItem="TXQ-Ep-EaU" firstAttribute="leading" secondItem="Cl0-qG-gqm" secondAttribute="leading" id="747-cw-1n1"/>
+                            <constraint firstItem="NxG-q9-OSo" firstAttribute="baseline" secondItem="Vlh-aE-JMg" secondAttribute="baseline" id="86A-lD-y4R"/>
                             <constraint firstItem="Vlh-aE-JMg" firstAttribute="top" secondItem="5yc-gP-MvD" secondAttribute="top" constant="20" symbolic="YES" id="8EF-4K-QuZ"/>
+                            <constraint firstItem="NxG-q9-OSo" firstAttribute="trailing" secondItem="Cl0-qG-gqm" secondAttribute="trailing" id="8xc-9h-Md9"/>
                             <constraint firstItem="uHd-gB-L8d" firstAttribute="baseline" secondItem="HCK-dv-sCV" secondAttribute="baseline" id="9lE-KT-8HL"/>
                             <constraint firstItem="Ni7-eB-xun" firstAttribute="top" secondItem="Vlh-aE-JMg" secondAttribute="bottom" constant="24" id="Bu2-1V-JZq"/>
                             <constraint firstAttribute="trailing" secondItem="eTf-Aq-wqw" secondAttribute="trailing" constant="20" symbolic="YES" id="DIl-ZW-D7v"/>
                             <constraint firstItem="gbu-Zy-bkG" firstAttribute="top" secondItem="Ypi-g7-J73" secondAttribute="bottom" constant="24" id="Fkd-GY-fRT"/>
                             <constraint firstItem="KMn-5w-ktZ" firstAttribute="leading" secondItem="PlC-CD-diP" secondAttribute="trailing" constant="8" symbolic="YES" id="JOb-EB-vCE"/>
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="top" secondItem="Ni7-eB-xun" secondAttribute="bottom" constant="8" symbolic="YES" id="JoG-QZ-KVi"/>
+                            <constraint firstItem="NxG-q9-OSo" firstAttribute="leading" secondItem="Vlh-aE-JMg" secondAttribute="trailing" constant="8" symbolic="YES" id="Maf-1V-ese"/>
                             <constraint firstItem="TXQ-Ep-EaU" firstAttribute="leading" secondItem="gbu-Zy-bkG" secondAttribute="trailing" constant="8" symbolic="YES" id="Mfh-Nc-3Dr"/>
                             <constraint firstItem="gbu-Zy-bkG" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="Nx5-AH-cY5"/>
                             <constraint firstItem="g24-mz-qy7" firstAttribute="leading" secondItem="Ntg-ei-q4y" secondAttribute="leading" id="OYd-7L-llS"/>
@@ -869,7 +885,6 @@
                             <constraint firstItem="Ypi-g7-J73" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="T03-XF-UUT"/>
                             <constraint firstAttribute="trailing" secondItem="Cl0-qG-gqm" secondAttribute="trailing" constant="20" symbolic="YES" id="Vnp-l9-cdL"/>
                             <constraint firstItem="g24-mz-qy7" firstAttribute="baseline" secondItem="PlC-CD-diP" secondAttribute="baseline" id="YR8-ns-fKr"/>
-                            <constraint firstAttribute="trailing" secondItem="Vlh-aE-JMg" secondAttribute="trailing" constant="20" symbolic="YES" id="a38-WY-ro3"/>
                             <constraint firstItem="uHd-gB-L8d" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="a79-aI-voW"/>
                             <constraint firstItem="Vlh-aE-JMg" firstAttribute="leading" secondItem="5yc-gP-MvD" secondAttribute="leading" constant="20" symbolic="YES" id="fhs-2W-IM7"/>
                             <constraint firstItem="g24-mz-qy7" firstAttribute="top" secondItem="uHd-gB-L8d" secondAttribute="bottom" constant="24" id="j1R-Wh-XKS"/>
@@ -892,4 +907,7 @@
             <point key="canvasLocation" x="817" y="1003.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+    </resources>
 </document>
