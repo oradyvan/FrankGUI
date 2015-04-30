@@ -62,7 +62,15 @@
         //
         // ## master...origin/master
         // ?? External/MKMapViewZoom/
-        NSArray *parts = [output componentsSeparatedByString:@"..."];
+        
+        // first leave the first line of the output only
+        NSArray *lines = [output componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+        if ([lines count] < 1)
+        {
+            return nil;
+        }
+
+        NSArray *parts = [[lines firstObject] componentsSeparatedByString:@"..."];
         if ([parts count] > 0)
         {
             NSString *firstPart = [parts firstObject];
