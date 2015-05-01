@@ -17,6 +17,9 @@
 @property (nonatomic, strong) NSString *gitBranchNameInAppPathURL;
 @property (nonatomic, strong) NSString *gitBranchNameInScriptsPathURL;
 @property (nonatomic, strong) NSString *gemLaunchPath;
+@property (nonatomic, strong) NSString *frankCucumberGemVersion;
+@property (nonatomic, strong) NSString *frankCucumberGemDirectoryName;
+@property (nonatomic, strong) NSString *frankCucumberGemPath;
 
 - (void)setupToolsPaths;
 - (NSString *)gitBranchNameInDirectory:(NSString *)directory;
@@ -144,62 +147,78 @@
 
 - (NSString *)frankCucumberGemVersion
 {
-    NSArray *args = @[@"list", @"-l", self.frankCucumberGemName];
-    int exitCode = -1;
-    NSString *output = [self.executor outputOfCommand:self.gemLaunchPath inDirectory:nil withArguments:args exitCode:&exitCode];
+    if (nil == _frankCucumberGemVersion)
+    {
+        NSArray *args = @[@"list", @"-l", self.frankCucumberGemName];
+        int exitCode = -1;
+        NSString *output = [self.executor outputOfCommand:self.gemLaunchPath inDirectory:nil withArguments:args exitCode:&exitCode];
 
-    if (0 == exitCode && [output length] > 0)
-    {
-        return output;
+        if (0 == exitCode && [output length] > 0)
+        {
+            _frankCucumberGemVersion = output;
+        }
+        else
+        {
+            _frankCucumberGemVersion = nil;
+        }
     }
-    else
-    {
-        return nil;
-    }
+
+    return _frankCucumberGemVersion;
 }
 
 - (NSString *)frankCucumberGemDirectoryName
 {
-    NSString *gemString = self.frankCucumberGemVersion;
-    NSArray *gemStringParts = [gemString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()"]];
-
-    return [NSString stringWithFormat:@"%@-%@", self.frankCucumberGemName, gemStringParts[1]];
-}
-
-- (NSString *)frankCucumberGemPath
-{
-    // obtain search paths of gems
-    NSArray *arguments = @[@"environment", @"gempath"];
-    int exitCode = -1;
-    NSString *output = [self.executor outputOfCommand:self.gemLaunchPath inDirectory:nil withArguments:arguments exitCode:&exitCode];
-
-    // on error, return nil
-    if (nil == output || 0 != exitCode)
+    if (nil == _frankCucumberGemDirectoryName)
     {
-        return nil;
-    }
-
-    NSArray *paths = [output componentsSeparatedByString:@":"];
-    // begin searching through paths for the paritcular directory
-    NSString *result = nil;
-    NSString *gemDirName = self.frankCucumberGemDirectoryName;
-    NSFileManager *fileMan = [NSFileManager defaultManager];
-    for (NSString *path in paths)
-    {
-        // construct candidate directory of gems common base directory and particular gem name
-        NSString *gemDir = [NSString stringWithFormat:@"%@/gems/%@", path, gemDirName];
-        BOOL isDirectory = NO;
-        if ([fileMan fileExistsAtPath:gemDir isDirectory:&isDirectory])
+        NSString *gemString = self.frankCucumberGemVersion;
+        if (nil != gemString)
         {
-            if (isDirectory)
+            NSArray *gemStringParts = [gemString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()"]];
+
+            if ([gemStringParts count] > 1)
             {
-                result = gemDir;
-                break;
+                _frankCucumberGemDirectoryName = [NSString stringWithFormat:@"%@-%@", self.frankCucumberGemName, gemStringParts[1]];
             }
         }
     }
 
-    return result;
+    return _frankCucumberGemDirectoryName;
+}
+
+- (NSString *)frankCucumberGemPath
+{
+    if (nil == _frankCucumberGemPath)
+    {
+        // obtain search paths of gems
+        NSArray *arguments = @[@"environment", @"gempath"];
+        int exitCode = -1;
+        NSString *output = [self.executor outputOfCommand:self.gemLaunchPath inDirectory:nil withArguments:arguments exitCode:&exitCode];
+
+        // only continue with successful output and exit code
+        if (nil != output && 0 == exitCode)
+        {
+            NSArray *paths = [output componentsSeparatedByString:@":"];
+            // begin searching through paths for the paritcular directory
+            NSString *gemDirName = self.frankCucumberGemDirectoryName;
+            NSFileManager *fileMan = [NSFileManager defaultManager];
+            for (NSString *path in paths)
+            {
+                // construct candidate directory of gems common base directory and particular gem name
+                NSString *gemDir = [NSString stringWithFormat:@"%@/gems/%@", path, gemDirName];
+                BOOL isDirectory = NO;
+                if ([fileMan fileExistsAtPath:gemDir isDirectory:&isDirectory])
+                {
+                    if (isDirectory)
+                    {
+                        _frankCucumberGemPath = gemDir;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    return _frankCucumberGemPath;
 }
 
 - (BOOL)isValidFrankCucumberGemVersion
@@ -283,6 +302,7 @@
         // only include those ending with .sh
         if ([[file pathExtension] isEqualToString:@"sh"])
         {
+            // cut off the extension, turn base file name into upper case
             NSString *baseName = [[file stringByDeletingPathExtension] uppercaseString];
             [result addObject:baseName];
         }
