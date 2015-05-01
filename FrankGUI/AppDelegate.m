@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SanityChecker.h"
+#import "Settings.h"
 
 @interface AppDelegate ()
 
@@ -19,9 +20,18 @@
 {
     if (nil == _sanityChecker)
     {
-        _sanityChecker = [SanityChecker new];
+        _sanityChecker = [[SanityChecker alloc] initWithSettings:self.settings];
     }
     return _sanityChecker;
+}
+
+- (Settings *)settings
+{
+    if (nil == _settings)
+    {
+        _settings = [Settings new];
+    }
+    return _settings;
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender

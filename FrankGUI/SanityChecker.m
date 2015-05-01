@@ -9,9 +9,11 @@
 #import "SanityChecker.h"
 #import "ConsoleToolExecutor.h"
 #import "Constants.h"
+#import "Settings.h"
 
 @interface SanityChecker ()
 
+@property (nonatomic, strong) Settings *settings;
 @property (nonatomic, strong) ConsoleToolExecutor *executor;
 @property (nonatomic, strong) NSString *gitLaunchPath;
 @property (nonatomic, strong) NSString *gitBranchNameInAppPathURL;
@@ -34,10 +36,11 @@
 
 @implementation SanityChecker
 
-- (instancetype)init
+- (instancetype)initWithSettings:(Settings *)settings
 {
     if (self = [super init])
     {
+        self.settings = settings;
         self.executor = [ConsoleToolExecutor new];
         [self setupToolsPaths];
     }
@@ -89,24 +92,6 @@
     return nil;
 }
 
-- (void)setAppPathURL:(NSURL *)appPathURL
-{
-    if (appPathURL != _appPathURL)
-    {
-        _appPathURL = appPathURL;
-        self.gitBranchNameInAppPathURL = [self gitBranchNameInDirectory:[_appPathURL path]];
-    }
-}
-
-- (void)setScriptsPathURL:(NSURL *)scriptsPathURL
-{
-    if (scriptsPathURL != _scriptsPathURL)
-    {
-        _scriptsPathURL = scriptsPathURL;
-        self.gitBranchNameInScriptsPathURL = [self gitBranchNameInDirectory:[_scriptsPathURL path]];
-    }
-}
-
 - (BOOL)isValidRepositoryPathURL:(NSURL *)pathURL
 {
     // check that the given path points to an existing directory
@@ -125,13 +110,13 @@
 - (BOOL)isValidAppPathURL
 {
     // there should be git branch available in that directory
-    return [self isValidRepositoryPathURL:self.appPathURL ] && [self.gitBranchNameInAppPathURL length] > 0;
+    return [self isValidRepositoryPathURL:self.settings.appPathURL] && [self.gitBranchNameInAppPathURL length] > 0;
 }
 
 - (BOOL)isValidScriptsPathURL
 {
     // there should be git branch available in that directory
-    return [self isValidRepositoryPathURL:self.scriptsPathURL] && [self.gitBranchNameInScriptsPathURL length] > 0;
+    return [self isValidRepositoryPathURL:self.settings.scriptsPathURL] && [self.gitBranchNameInScriptsPathURL length] > 0;
 }
 
 - (BOOL)areTheSameBranchesInAppAndInScriptsPaths
@@ -252,6 +237,8 @@
 - (void)validate
 {
     [self.delegate validatingDidStart];
+    self.gitBranchNameInAppPathURL = [self gitBranchNameInDirectory:[self.settings.appPathURL path]];
+    self.gitBranchNameInScriptsPathURL = [self gitBranchNameInDirectory:[self.settings.scriptsPathURL path]];
 
     if (![self isValidAppPathURL])
     {
@@ -292,7 +279,7 @@
 
 - (NSArray *)listOfAvailablePlatforms
 {
-    NSString *envDir = [[self.scriptsPathURL relativePath] stringByAppendingPathComponent:kFrankSkeletonEnv];
+    NSString *envDir = [[self.settings.scriptsPathURL relativePath] stringByAppendingPathComponent:kFrankSkeletonEnv];
 
     NSMutableArray *result = [NSMutableArray new];
 

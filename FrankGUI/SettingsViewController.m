@@ -9,9 +9,7 @@
 #import "SettingsViewController.h"
 #import "AppDelegate.h"
 #import "SanityChecker.h"
-
-static NSString *const kAppPathURLKey     = @"AppPathURLKey";
-static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
+#import "Settings.h"
 
 @interface SettingsViewController () <SanityCheckerDelegate>
 
@@ -23,12 +21,15 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 @property (nonatomic, weak) IBOutlet NSTextField *gemVersionLabel;
 @property (nonatomic, weak) IBOutlet NSPopUpButtonCell *platformPopUp;
 
+@property (nonatomic, weak) Settings *settings;
 @property (nonatomic, weak) SanityChecker *sanityChecker;
 
 - (IBAction)appPathControlValueChanged:(id)sender;
 - (IBAction)scriptsPathControlValueChanged:(id)sender;
 - (IBAction)revealGemDirectoryInFinder:(id)sender;
 - (IBAction)reloadSettings:(id)sender;
+- (IBAction)platformPopUpValueChanged:(id)sender;
+
 - (void)warnLevel:(WarnLevel)warnLevel message:(NSString *)message;
 - (void)setText:(NSString *)text inTextField:(NSTextField *)textField;
 
@@ -67,15 +68,18 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Load app path from user preferences
-    NSURL *appPathURL = [[NSUserDefaults standardUserDefaults] URLForKey:kAppPathURLKey];
+    // prepare Settings object for being used
+    self.settings = [(AppDelegate *)[[NSApplication sharedApplication] delegate] settings];
+
+    // Load app path from user settings
+    NSURL *appPathURL = self.settings.appPathURL;
     if (nil != appPathURL)
     {
         [self.appPathControl setURL:appPathURL];
     }
 
-    // Load scripts path from user preferences
-    NSURL *scriptsPathURL = [[NSUserDefaults standardUserDefaults] URLForKey:kScriptsPathURLKey];
+    // Load scripts path from user settings
+    NSURL *scriptsPathURL = self.settings.scriptsPathURL;
     if (nil != scriptsPathURL)
     {
         [self.scriptsPathControl setURL:scriptsPathURL];
@@ -95,6 +99,8 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     // Update the view, if already loaded.
 }
 
+#pragma mark - UI controls actions
+
 - (IBAction)appPathControlValueChanged:(id)sender
 {
     NSPathControl *control = (NSPathControl *)sender;
@@ -104,9 +110,10 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     NSURL *pathURL = [[self.appPathControl clickedPathComponentCell] URL];
     [self.appPathControl setURL:pathURL];
 
-    // Store the selected path in user preferences
-    [[NSUserDefaults standardUserDefaults] setURL:pathURL forKey:kAppPathURLKey];
+    // Store the selected path in user settings
+    self.settings.appPathURL = pathURL;
 
+    // Re-validate settings after the value has changed
     [self.sanityChecker validate];
 }
 
@@ -118,10 +125,11 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     // Select that chosen component of the path.
     NSURL *pathURL = [[self.scriptsPathControl clickedPathComponentCell] URL];
     [self.scriptsPathControl setURL:pathURL];
-    
-    // Store the selected path in user preferences
-    [[NSUserDefaults standardUserDefaults] setURL:pathURL forKey:kScriptsPathURLKey];
-    
+
+    // Store the selected path in user settings
+    self.settings.scriptsPathURL = pathURL;
+
+    // Re-validate settings after the value has changed
     [self.sanityChecker validate];
 }
 
@@ -138,6 +146,16 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     [self.sanityChecker validate];
 }
 
+- (IBAction)platformPopUpValueChanged:(id)sender
+{
+    if ([sender isKindOfClass:[NSPopUpButton class]])
+    {
+        NSPopUpButton *button = (NSPopUpButton *)sender;
+        NSString *selectedPlatform = button.titleOfSelectedItem;
+        NSLog(@"selectedPlatform = %@", selectedPlatform);
+    }
+}
+
 #pragma mark - SanityCheckerDelegate methods
 
 - (void)validatingDidStart
@@ -150,8 +168,8 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
     [self.platformPopUp removeAllItems];
 
     // use sanity checker for validating preferences
-    self.sanityChecker.appPathURL = [self.appPathControl URL];
-    self.sanityChecker.scriptsPathURL = [self.scriptsPathControl URL];
+    self.settings.appPathURL = [self.appPathControl URL];
+    self.settings.scriptsPathURL = [self.scriptsPathControl URL];
 }
 
 - (void)validatingDidFinish

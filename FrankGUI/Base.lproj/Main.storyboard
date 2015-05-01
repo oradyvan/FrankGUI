@@ -673,7 +673,7 @@
                         <tabViewItem identifier="" id="OiN-IP-R2V"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="skH-AE-Ebq">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="521" height="332"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="message"/>
                         <tabViewItems/>
@@ -685,7 +685,7 @@
                 </tabViewController>
                 <customObject id="etw-ul-ets" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="877"/>
+            <point key="canvasLocation" x="110.5" y="893"/>
         </scene>
         <!--Runner-->
         <scene sceneID="MW2-b7-BzT">
@@ -828,17 +828,20 @@
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4X2-Mi-hrx">
                                 <rect key="frame" x="144" y="146" width="73" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="2Lj-ob-zHs" id="Dgk-Cw-lbe">
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="axesIndependently" inset="2" id="Dgk-Cw-lbe">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="oSI-yh-qJE">
                                         <items>
-                                            <menuItem title="Item 1" state="on" id="2Lj-ob-zHs"/>
+                                            <menuItem title="Item 1" id="2Lj-ob-zHs"/>
                                             <menuItem title="Item 2" id="mYL-oY-v2A"/>
                                             <menuItem title="Item 3" id="t96-op-2az"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="platformPopUpValueChanged:" target="9S3-1d-eyq" id="CaY-Be-VbF"/>
+                                </connections>
                             </popUpButton>
                             <button horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="NxG-q9-OSo">
                                 <rect key="frame" x="562" y="357" width="32" height="32"/>

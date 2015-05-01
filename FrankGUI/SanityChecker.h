@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class Settings;
+
 /**
  * Result of the last sanity check as a whole. The value dtermines if this is safe
  * to operate in the app. All levels except for WarnLevelError are considered safe
@@ -49,14 +51,13 @@ typedef enum
 
 @property (nonatomic, assign) id<SanityCheckerDelegate> delegate;
 
-@property (nonatomic, copy) NSURL *appPathURL;
-@property (nonatomic, copy) NSURL *scriptsPathURL;
 @property (nonatomic, readonly) NSString *gitBranchNameInAppPathURL;
 @property (nonatomic, readonly) NSString *gitBranchNameInScriptsPathURL;
 @property (nonatomic, readonly) NSString *frankCucumberGemName;
 @property (nonatomic, readonly) NSString *frankCucumberGemVersion;
 @property (nonatomic, readonly) NSString *frankCucumberGemPath;
 
+- (instancetype)initWithSettings:(Settings *)settings;
 - (void)validate;
 - (NSArray *)listOfAvailablePlatforms;
 
