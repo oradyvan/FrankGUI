@@ -152,7 +152,7 @@
     {
         NSPopUpButton *button = (NSPopUpButton *)sender;
         NSString *selectedPlatform = button.titleOfSelectedItem;
-        NSLog(@"selectedPlatform = %@", selectedPlatform);
+        self.settings.platform = selectedPlatform;
     }
 }
 
@@ -180,6 +180,13 @@
 
     NSArray *platforms = [self.sanityChecker listOfAvailablePlatforms];
     [self.platformPopUp addItemsWithTitles:platforms];
+
+    // Load platform value from user settings
+    NSString *platform = self.settings.platform;
+    if (nil != platform)
+    {
+        [self.platformPopUp selectItemWithTitle:platform];
+    }
 }
 
 - (void)validatingWarnLevel:(WarnLevel)warnLevel message:(NSString *)message

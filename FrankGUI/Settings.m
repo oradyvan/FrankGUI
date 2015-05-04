@@ -10,12 +10,14 @@
 
 static NSString *const kAppPathURLKey     = @"AppPathURLKey";
 static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
+static NSString *const kPlatformKey       = @"PlatformKey";
 
 @implementation Settings
 {
 @protected
     NSURL *_appPathURL;
     NSURL *_scriptsPathURL;
+    NSString *_platform;
 }
 
 - (NSURL *)appPathURL
@@ -70,6 +72,34 @@ static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
         {
             // Remove path from user preferences
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:kScriptsPathURLKey];
+        }
+    }
+}
+
+- (NSString *)platform
+{
+    if (nil == _platform)
+    {
+        // Attempt to read the value from user preferences
+        _platform = [[NSUserDefaults standardUserDefaults] stringForKey:kPlatformKey];
+    }
+    return _platform;
+}
+
+- (void)setPlatform:(NSString *)platform
+{
+    if (_platform != platform)
+    {
+        _platform = platform;
+        if (nil != _platform)
+        {
+            // Store the selected path in user preferences
+            [[NSUserDefaults standardUserDefaults] setObject:_platform forKey:kPlatformKey];
+        }
+        else
+        {
+            // Remove path from user preferences
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPlatformKey];
         }
     }
 }

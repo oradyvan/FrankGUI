@@ -12,5 +12,6 @@
 
 @property (nonatomic, copy) NSURL *appPathURL;
 @property (nonatomic, copy) NSURL *scriptsPathURL;
+@property (nonatomic, copy) NSString *platform;
 
 @end
