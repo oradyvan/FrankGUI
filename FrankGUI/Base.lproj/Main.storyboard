@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -690,15 +690,77 @@
         <!--Runner-->
         <scene sceneID="MW2-b7-BzT">
             <objects>
-                <viewController title="Runner" id="dHb-Xn-eBu" sceneMemberID="viewController">
+                <viewController title="Runner" id="dHb-Xn-eBu" customClass="RunnerViewController" sceneMemberID="viewController">
                     <view key="view" id="rsY-lE-4Br">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="608" height="422"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4yN-fl-ghO">
+                                <rect key="frame" x="14" y="374" width="107" height="32"/>
+                                <buttonCell key="cell" type="push" title="Run Suites" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RCn-Ys-F12">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sP3-rw-CaV">
+                                <rect key="frame" x="121" y="374" width="89" height="32"/>
+                                <buttonCell key="cell" type="push" title="Frankify" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nag-4s-p8f">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onFrankify:" target="dHb-Xn-eBu" id="KLU-wb-8zL"/>
+                                </connections>
+                            </button>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Naq-OU-pwJ">
+                                <rect key="frame" x="212" y="20" width="376" height="382"/>
+                                <clipView key="contentView" id="Kor-05-eQ6">
+                                    <rect key="frame" x="1" y="1" width="223" height="133"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" usesRuler="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="UHh-W0-9iO">
+                                            <rect key="frame" x="0.0" y="0.0" width="224" height="133"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="359" height="380"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="359" height="380"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="bHU-fE-NAD">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="AMW-R4-4ge">
+                                    <rect key="frame" x="224" y="1" width="15" height="133"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="sP3-rw-CaV" firstAttribute="leading" secondItem="4yN-fl-ghO" secondAttribute="trailing" constant="12" id="5yV-Mc-Lgc"/>
+                            <constraint firstItem="4yN-fl-ghO" firstAttribute="top" secondItem="rsY-lE-4Br" secondAttribute="top" constant="20" id="9BP-9q-lgr"/>
+                            <constraint firstAttribute="trailing" secondItem="Naq-OU-pwJ" secondAttribute="trailing" constant="20" id="Kgo-cN-zfN"/>
+                            <constraint firstItem="Naq-OU-pwJ" firstAttribute="leading" secondItem="sP3-rw-CaV" secondAttribute="trailing" constant="8" id="Yrp-cS-B7o"/>
+                            <constraint firstItem="Naq-OU-pwJ" firstAttribute="top" secondItem="rsY-lE-4Br" secondAttribute="top" constant="20" id="j8S-dO-6QL"/>
+                            <constraint firstAttribute="bottom" secondItem="Naq-OU-pwJ" secondAttribute="bottom" constant="20" id="lMg-xU-ODB"/>
+                            <constraint firstItem="sP3-rw-CaV" firstAttribute="top" secondItem="rsY-lE-4Br" secondAttribute="top" constant="20" id="tS3-Sv-A7H"/>
+                            <constraint firstItem="4yN-fl-ghO" firstAttribute="leading" secondItem="rsY-lE-4Br" secondAttribute="leading" constant="20" id="yjA-yX-BIF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="frankifyButton" destination="sP3-rw-CaV" id="6Vy-2P-GmZ"/>
+                        <outlet property="outputView" destination="Naq-OU-pwJ" id="vvq-y8-VsH"/>
+                        <outlet property="runSuitesButton" destination="4yN-fl-ghO" id="kWp-ic-g0J"/>
+                    </connections>
                 </viewController>
                 <customObject id="UQw-3g-byB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="738" y="587"/>
+            <point key="canvasLocation" x="817" y="526"/>
         </scene>
         <!--Settings-->
         <scene sceneID="w7T-dO-FeW">

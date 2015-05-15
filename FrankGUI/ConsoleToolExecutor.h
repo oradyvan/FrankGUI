@@ -10,7 +10,18 @@
 
 @interface ConsoleToolExecutor : NSObject
 
-- (NSString *)outputOfCommand:(NSString *)command inDirectory:(NSString *)directory withArguments:(NSArray *)arguments exitCode:(int *)exitCode;
+- (NSString *)outputOfCommand:(NSString *)command
+                  inDirectory:(NSString *)directory
+                withArguments:(NSArray *)arguments
+                     exitCode:(int *)exitCode;
+
+- (void)asyncOutputOfCommand:(NSString *)command
+                 inDirectory:(NSString *)directory
+               withArguments:(NSArray *)arguments
+                      target:(id)target
+       dataAvailableSelector:(SEL)dataAvailableSelector
+      taskTerminatedSelector:(SEL)taskTerminatedSelector;
+
 - (NSString *)pathForTool:(NSString *)toolName;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ConsoleToolExecutor.h"
 
+
 @interface ConsoleToolExecutor ()
 
 @property (nonatomic, strong) NSString *shellPath; // path to user's shell
@@ -27,7 +28,10 @@
     return self;
 }
 
-- (NSString *)outputOfCommand:(NSString *)command inDirectory:(NSString *)directory withArguments:(NSArray *)arguments exitCode:(int *)exitCode
+- (NSString *)outputOfCommand:(NSString *)command
+                  inDirectory:(NSString *)directory
+                withArguments:(NSArray *)arguments
+                     exitCode:(int *)exitCode
 {
     NSTask *aTask = [[NSTask alloc] init];
     
@@ -63,6 +67,54 @@
     NSString *string = [[NSString alloc] initWithData:data encoding:[NSString defaultCStringEncoding]];
     string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return string;
+}
+
+- (void)asyncOutputOfCommand:(NSString *)command
+                 inDirectory:(NSString *)directory
+               withArguments:(NSArray *)arguments
+                      target:(id)target
+       dataAvailableSelector:(SEL)dataAvailableSelector
+      taskTerminatedSelector:(SEL)taskTerminatedSelector
+{
+    NSTask *aTask = [[NSTask alloc] init];
+    
+    NSPipe *pipe = [NSPipe pipe];
+    [aTask setStandardOutput:pipe];
+
+    NSFileHandle *file = [pipe fileHandleForReading];
+    [file waitForDataInBackgroundAndNotify];
+
+    // re-suscribe to the notification sent when a task produces any output
+    [[NSNotificationCenter defaultCenter] removeObserver:target name:NSFileHandleDataAvailableNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:target selector:dataAvailableSelector name:NSFileHandleDataAvailableNotification object:nil];
+
+    // re-suscribe to the notification sent when a task is terminated
+    [[NSNotificationCenter defaultCenter] removeObserver:target name:NSTaskDidTerminateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:target selector:taskTerminatedSelector name:NSTaskDidTerminateNotification object:nil];
+
+    if (nil != arguments)
+    {
+        [aTask setArguments:arguments];
+    }
+
+    if (nil != directory)
+    {
+        [aTask setCurrentDirectoryPath:directory];
+    }
+
+    [aTask setLaunchPath:command];
+    
+    @try
+    {
+        [aTask launch];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"EXCEPTION: %@\nlaunch path = %@\ndirectory = %@\narguments = %@", exception, command, directory, arguments);
+    }
+    @finally
+    {
+    }
 }
 
 - (NSString *)pathForTool:(NSString *)toolName

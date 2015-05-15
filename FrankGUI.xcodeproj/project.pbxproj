@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E310DA81B063EE600B5ED48 /* RunnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310DA71B063EE600B5ED48 /* RunnerViewController.m */; };
 		6E8F44811AF2784300A50CC6 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F44801AF2784300A50CC6 /* Constants.m */; };
 		6EE1F9821AF375EB006844DA /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE1F9811AF375EB006844DA /* Settings.m */; };
 		6EF0F4271A8A03470012FD03 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0F4261A8A03470012FD03 /* AppDelegate.m */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E310DA61B063EE600B5ED48 /* RunnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunnerViewController.h; sourceTree = "<group>"; };
+		6E310DA71B063EE600B5ED48 /* RunnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunnerViewController.m; sourceTree = "<group>"; };
 		6E8F447F1AF2782400A50CC6 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6E8F44801AF2784300A50CC6 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		6EE1F9801AF375EB006844DA /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 		6EF0F4471A8A0E760012FD03 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6E310DA61B063EE600B5ED48 /* RunnerViewController.h */,
+				6E310DA71B063EE600B5ED48 /* RunnerViewController.m */,
 				6EF0F42A1A8A03470012FD03 /* SettingsViewController.h */,
 				6EF0F42B1A8A03470012FD03 /* SettingsViewController.m */,
 			);
@@ -253,6 +258,7 @@
 			files = (
 				6EF0F42C1A8A03470012FD03 /* SettingsViewController.m in Sources */,
 				6EF0F4291A8A03470012FD03 /* main.m in Sources */,
+				6E310DA81B063EE600B5ED48 /* RunnerViewController.m in Sources */,
 				6EF0F4271A8A03470012FD03 /* AppDelegate.m in Sources */,
 				6EF0F44F1A8A4EE50012FD03 /* ConsoleToolExecutor.m in Sources */,
 				6EF0F44A1A8A25A00012FD03 /* SanityChecker.m in Sources */,
