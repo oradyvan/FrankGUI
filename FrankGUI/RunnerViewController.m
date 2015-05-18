@@ -48,7 +48,7 @@
     NSTextView *textView = self.outputView.contentView.documentView;
     [textView.textStorage.mutableString setString:@""];
 
-    NSString *script = [[self.settings.scriptsPathURL relativePath] stringByAppendingPathComponent:@"test-reads.sh"];
+    NSString *script = [[self.settings.scriptsPathURL relativePath] stringByAppendingPathComponent:@"setup_frank.sh"];
 
     __weak __typeof(self) weakSelf = self;
 
@@ -70,8 +70,9 @@
 {
     if (nil != aData)
     {
-        // extract available data and disply in output view
+        // extract available data and display in output view
         NSString *string = [[NSString alloc] initWithData:aData encoding:NSUTF8StringEncoding];
+        NSLog(@"%@", string);
 
         dispatch_async(dispatch_get_main_queue(), ^
         {
