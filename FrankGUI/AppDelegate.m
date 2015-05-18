@@ -46,7 +46,7 @@
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
-    // Tear down app
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

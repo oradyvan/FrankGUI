@@ -664,10 +664,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Tab View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="u0g-SE-nbl">
             <objects>
-                <tabViewController selectedTabViewItemIndex="1" id="aWY-bK-Ksu" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="1" id="aWY-bK-Ksu" customClass="MainViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="uQO-ce-5NI"/>
                         <tabViewItem identifier="" id="OiN-IP-R2V"/>
@@ -719,7 +719,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" usesRuler="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="UHh-W0-9iO">
-                                            <rect key="frame" x="0.0" y="0.0" width="224" height="133"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="224" height="380"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="359" height="380"/>

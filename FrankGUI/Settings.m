@@ -11,6 +11,7 @@
 static NSString *const kAppPathURLKey     = @"AppPathURLKey";
 static NSString *const kScriptsPathURLKey = @"ScriptsPathURLKey";
 static NSString *const kPlatformKey       = @"PlatformKey";
+static NSString *const kTabChoiceKey      = @"TabChoiceKey";
 
 @implementation Settings
 {
@@ -18,6 +19,17 @@ static NSString *const kPlatformKey       = @"PlatformKey";
     NSURL *_appPathURL;
     NSURL *_scriptsPathURL;
     NSString *_platform;
+    UI_TAB_CHOICE _tabChoice;
+}
+
+- (instancetype)init
+{
+    if (self = [super init])
+    {
+        _tabChoice = UI_TAB_UNDEFINED;
+    }
+
+    return self;
 }
 
 - (NSURL *)appPathURL
@@ -101,6 +113,27 @@ static NSString *const kPlatformKey       = @"PlatformKey";
             // Remove path from user preferences
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPlatformKey];
         }
+    }
+}
+
+- (UI_TAB_CHOICE)tabChoice
+{
+    if (UI_TAB_UNDEFINED == _tabChoice)
+    {
+        // Attempt to read the value from user preferences
+        NSInteger value = [[NSUserDefaults standardUserDefaults] integerForKey:kTabChoiceKey];
+        _tabChoice = (UI_TAB_CHOICE)value;
+    }
+    return _tabChoice;
+}
+
+- (void)setTabChoice:(UI_TAB_CHOICE)tabChoice
+{
+    if (_tabChoice != tabChoice)
+    {
+        _tabChoice = tabChoice;
+        // Store new chosen tab to user preferences
+        [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger)_tabChoice forKey:kTabChoiceKey];
     }
 }
 
