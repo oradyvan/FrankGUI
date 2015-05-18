@@ -69,40 +69,65 @@
     return string;
 }
 
+
+/**
+ * Helper method, removes readability handler of given instance of either NSFileHandle or NSPipe class
+ * @param anObject An instance of a class that needs to have its readability handler cleared
+ */
+- (void)clearReadabilityHandlerOf:(id)anObject
+{
+    if ([anObject isKindOfClass:[NSFileHandle class]])
+    {
+        NSFileHandle *fileHandle = anObject;
+        fileHandle.readabilityHandler = nil;
+    }
+    else if ([anObject isKindOfClass:[NSPipe class]])
+    {
+        NSPipe *pipe = anObject;
+        [pipe fileHandleForReading].readabilityHandler = nil;
+    }
+}
+
+
 - (void)asyncOutputOfCommand:(NSString *)command
                  inDirectory:(NSString *)directory
                withArguments:(NSArray *)arguments
-                      target:(id)target
-       dataAvailableSelector:(SEL)dataAvailableSelector
-      taskTerminatedSelector:(SEL)taskTerminatedSelector
+      withReadabilityHandler:(ReadabilityHandlerBlock)readabilityHandler
+       andTerminationHandler:(TerminationHandlerBlock)terminationHandler
 {
     NSTask *aTask = [[NSTask alloc] init];
     
     NSPipe *pipe = [NSPipe pipe];
     [aTask setStandardOutput:pipe];
 
-    NSFileHandle *file = [pipe fileHandleForReading];
-    [file waitForDataInBackgroundAndNotify];
-
-    // re-suscribe to the notification sent when a task produces any output
-    [[NSNotificationCenter defaultCenter] removeObserver:target name:NSFileHandleDataAvailableNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:target selector:dataAvailableSelector name:NSFileHandleDataAvailableNotification object:nil];
-
-    // re-suscribe to the notification sent when a task is terminated
-    [[NSNotificationCenter defaultCenter] removeObserver:target name:NSTaskDidTerminateNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:target selector:taskTerminatedSelector name:NSTaskDidTerminateNotification object:nil];
+    if (readabilityHandler)
+    {
+        NSFileHandle *file = [pipe fileHandleForReading];
+        file.readabilityHandler = readabilityHandler;
+    }
 
     if (nil != arguments)
     {
         [aTask setArguments:arguments];
     }
-
+    
     if (nil != directory)
     {
         [aTask setCurrentDirectoryPath:directory];
     }
-
+    
     [aTask setLaunchPath:command];
+
+    aTask.terminationHandler = ^(NSTask *task)
+    {
+        if (terminationHandler)
+        {
+            terminationHandler(task);
+        }
+
+        [self clearReadabilityHandlerOf:task.standardOutput];
+        [self clearReadabilityHandlerOf:task.standardError];
+    };
     
     @try
     {

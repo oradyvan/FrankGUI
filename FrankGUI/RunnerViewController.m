@@ -18,6 +18,7 @@
 @property (weak) IBOutlet NSButton *runSuitesButton;
 
 @property (nonatomic, weak) Settings *settings;
+@property (nonatomic, strong) ConsoleToolExecutor *executor;
 
 - (IBAction)onFrankify:(id)sender;
 
@@ -30,6 +31,8 @@
 
     // prepare Settings object for being used
     self.settings = [(AppDelegate *)[[NSApplication sharedApplication] delegate] settings];
+
+    self.executor = [[ConsoleToolExecutor alloc] init];
 }
 
 - (void)enableButtons:(BOOL)enabled
@@ -47,36 +50,39 @@
 
     NSString *script = [[self.settings.scriptsPathURL relativePath] stringByAppendingPathComponent:@"test-reads.sh"];
 
-    ConsoleToolExecutor *executor = [[ConsoleToolExecutor alloc] init];
-    [executor asyncOutputOfCommand:script
-                       inDirectory:nil
-                     withArguments:nil
-                            target:self
-             dataAvailableSelector:@selector(onFileHandleDataAvailableNotification:)
-            taskTerminatedSelector:@selector(onExecutingTaskCompleted:)];
+    __weak __typeof(self) weakSelf = self;
+
+    [self.executor asyncOutputOfCommand:script
+                            inDirectory:nil
+                          withArguments:nil
+                 withReadabilityHandler:^(NSFileHandle *fileHandle)
+     {
+         NSData *data = fileHandle.availableData;
+         [weakSelf onFileHandleDataAvailable:data];
+     }
+                  andTerminationHandler:^(NSTask *task)
+     {
+         [weakSelf onExecutingTaskCompleted:task];
+     }];
 }
 
-- (void)onFileHandleDataAvailableNotification:(NSNotification *)notification
+- (void)onFileHandleDataAvailable:(NSData *)aData
 {
-    NSFileHandle *fileHandle = notification.object;
-    NSData *data = fileHandle.availableData;
-
-    if (nil != data)
+    if (nil != aData)
     {
-        // wait for possibly more output
-        [fileHandle waitForDataInBackgroundAndNotify];
-
         // extract available data and disply in output view
-        NSString *string = [[NSString alloc] initWithData:data encoding:[NSString defaultCStringEncoding]];
+        NSString *string = [[NSString alloc] initWithData:aData encoding:NSUTF8StringEncoding];
 
-        NSTextView *textView = self.outputView.contentView.documentView;
-        [textView.textStorage.mutableString appendString:string];
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            NSTextView *textView = self.outputView.contentView.documentView;
+            [textView.textStorage.mutableString appendString:string];
+        });
     }
 }
 
-- (void)onExecutingTaskCompleted:(NSNotification *)notification
+- (void)onExecutingTaskCompleted:(NSTask *)task
 {
-    NSTask *task = notification.object;
     if (!task.isRunning)
     {
         if (0 == [task terminationStatus])
@@ -88,7 +94,10 @@
             NSLog(@"Task failed: %@", task);
         }
         
-        [self enableButtons:YES];
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            [self enableButtons:YES];
+        });
     }
 }
 
