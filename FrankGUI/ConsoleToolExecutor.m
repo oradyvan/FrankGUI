@@ -64,7 +64,7 @@
     
     NSFileHandle *file = [pipe fileHandleForReading];
     NSData *data = [file readDataToEndOfFile];
-    NSString *string = [[NSString alloc] initWithData:data encoding:[NSString defaultCStringEncoding]];
+    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return string;
 }
