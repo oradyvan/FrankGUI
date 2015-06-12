@@ -9,7 +9,7 @@
 #import "SanityChecker.h"
 #import "ConsoleToolExecutor.h"
 #import "Constants.h"
-#import "Settings.h"
+#import "FrankGUI-Swift.h"
 
 @interface SanityChecker ()
 

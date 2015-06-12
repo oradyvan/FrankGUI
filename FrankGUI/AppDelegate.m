@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SanityChecker.h"
-#import "Settings.h"
+#import "FrankGUI-Swift.h"
 
 @interface AppDelegate ()
 

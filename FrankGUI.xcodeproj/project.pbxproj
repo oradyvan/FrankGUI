@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6E310DA81B063EE600B5ED48 /* RunnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310DA71B063EE600B5ED48 /* RunnerViewController.m */; };
+		6E864C3A1B2A9DBB006E47C6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E864C391B2A9DBB006E47C6 /* Settings.swift */; };
 		6E8F44811AF2784300A50CC6 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F44801AF2784300A50CC6 /* Constants.m */; };
 		6EAE94121B0A12070075C974 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EAE94111B0A12070075C974 /* MainViewController.m */; };
-		6EE1F9821AF375EB006844DA /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE1F9811AF375EB006844DA /* Settings.m */; };
 		6EF0F4271A8A03470012FD03 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0F4261A8A03470012FD03 /* AppDelegate.m */; };
 		6EF0F4291A8A03470012FD03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0F4281A8A03470012FD03 /* main.m */; };
 		6EF0F42C1A8A03470012FD03 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0F42B1A8A03470012FD03 /* SettingsViewController.m */; };
@@ -34,12 +34,12 @@
 /* Begin PBXFileReference section */
 		6E310DA61B063EE600B5ED48 /* RunnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunnerViewController.h; sourceTree = "<group>"; };
 		6E310DA71B063EE600B5ED48 /* RunnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunnerViewController.m; sourceTree = "<group>"; };
+		6E864C381B2A9DBB006E47C6 /* FrankGUI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FrankGUI-Bridging-Header.h"; sourceTree = "<group>"; };
+		6E864C391B2A9DBB006E47C6 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		6E8F447F1AF2782400A50CC6 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6E8F44801AF2784300A50CC6 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		6EAE94101B0A12070075C974 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		6EAE94111B0A12070075C974 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		6EE1F9801AF375EB006844DA /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
-		6EE1F9811AF375EB006844DA /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		6EF0F4201A8A03470012FD03 /* FrankGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrankGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EF0F4241A8A03470012FD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EF0F4251A8A03470012FD03 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -156,8 +156,8 @@
 				6E8F44801AF2784300A50CC6 /* Constants.m */,
 				6EF0F4481A8A25A00012FD03 /* SanityChecker.h */,
 				6EF0F4491A8A25A00012FD03 /* SanityChecker.m */,
-				6EE1F9801AF375EB006844DA /* Settings.h */,
-				6EE1F9811AF375EB006844DA /* Settings.m */,
+				6E864C391B2A9DBB006E47C6 /* Settings.swift */,
+				6E864C381B2A9DBB006E47C6 /* FrankGUI-Bridging-Header.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -206,6 +206,7 @@
 		6EF0F4181A8A03470012FD03 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Oleksiy Radyvanyuk";
 				TargetAttributes = {
@@ -265,11 +266,11 @@
 				6EF0F4291A8A03470012FD03 /* main.m in Sources */,
 				6E310DA81B063EE600B5ED48 /* RunnerViewController.m in Sources */,
 				6EF0F4271A8A03470012FD03 /* AppDelegate.m in Sources */,
+				6E864C3A1B2A9DBB006E47C6 /* Settings.swift in Sources */,
 				6EAE94121B0A12070075C974 /* MainViewController.m in Sources */,
 				6EF0F44F1A8A4EE50012FD03 /* ConsoleToolExecutor.m in Sources */,
 				6EF0F44A1A8A25A00012FD03 /* SanityChecker.m in Sources */,
 				6E8F44811AF2784300A50CC6 /* Constants.m in Sources */,
-				6EE1F9821AF375EB006844DA /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,10 +384,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = FrankGUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FrankGUI/FrankGUI-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -394,10 +398,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = FrankGUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FrankGUI/FrankGUI-Bridging-Header.h";
 			};
 			name = Release;
 		};

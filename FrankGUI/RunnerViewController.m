@@ -8,7 +8,7 @@
 
 #import "RunnerViewController.h"
 #import "AppDelegate.h"
-#import "Settings.h"
+#import "FrankGUI-Swift.h"
 #import "ConsoleToolExecutor.h"
 
 @interface RunnerViewController ()

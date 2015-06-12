@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import "Settings.h"
+#import "FrankGUI-Swift.h"
 #import "AppDelegate.h"
 
 @interface MainViewController ()
@@ -31,11 +31,11 @@
     [super viewDidAppear];
 
     switch (self.settings.tabChoice) {
-        case UI_TAB_RUNNER:
+        case TabChoiceRunner:
             self.selectedTabViewItemIndex = 0;
             break;
             
-        case UI_TAB_SETTINGS:
+        case TabChoiceSettings:
             self.selectedTabViewItemIndex = [self.tabViewItems count] - 1;
             break;
             
@@ -55,11 +55,11 @@
         NSInteger index = [tabView indexOfTabViewItem:tabViewItem];
         if (index == 0)
         {
-            self.settings.tabChoice = UI_TAB_RUNNER;
+            self.settings.tabChoice = TabChoiceRunner;
         }
         else if (index == [tabView numberOfTabViewItems] - 1)
         {
-            self.settings.tabChoice = UI_TAB_SETTINGS;
+            self.settings.tabChoice = TabChoiceSettings;
         }
     }
 }
