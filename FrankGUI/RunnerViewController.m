@@ -9,7 +9,6 @@
 #import "RunnerViewController.h"
 #import "AppDelegate.h"
 #import "FrankGUI-Swift.h"
-#import "ConsoleToolExecutor.h"
 
 @interface RunnerViewController ()
 

@@ -7,7 +7,6 @@
 //
 
 #import "SanityChecker.h"
-#import "ConsoleToolExecutor.h"
 #import "Constants.h"
 #import "FrankGUI-Swift.h"
 
@@ -60,8 +59,13 @@
 - (NSString *)gitBranchNameInDirectory:(NSString *)directory
 {
     NSArray* args = @[@"status", @"-s", @"-b", @"--porcelain"];
-    int exitCode = -1;
-    NSString *output = [self.executor outputOfCommand:self.gitLaunchPath inDirectory:directory withArguments:args exitCode:&exitCode];
+    __block int exitCode = -1;
+    __block NSString *output = nil;
+    [self.executor outputOfCommand:self.gitLaunchPath inDirectory:directory withArguments:args output:^(NSString * __nonnull internalResult, int32_t internalExitCode)
+    {
+        output = internalResult;
+        exitCode = internalExitCode;
+    }];
 
     if (0 == exitCode && [output length] > 0)
     {
@@ -135,8 +139,13 @@
     if (nil == _frankCucumberGemVersion)
     {
         NSArray *args = @[@"list", @"-l", self.frankCucumberGemName];
-        int exitCode = -1;
-        NSString *output = [self.executor outputOfCommand:self.gemLaunchPath inDirectory:nil withArguments:args exitCode:&exitCode];
+        __block int exitCode = -1;
+        __block NSString *output = nil;
+        [self.executor outputOfCommand:self.gemLaunchPath inDirectory:nil withArguments:args output:^(NSString * __nonnull internalResult, int32_t internalExitCode)
+        {
+            output = internalResult;
+            exitCode = internalExitCode;
+        }];
 
         if (0 == exitCode && [output length] > 0)
         {
@@ -176,8 +185,13 @@
     {
         // obtain search paths of gems
         NSArray *arguments = @[@"environment", @"gempath"];
-        int exitCode = -1;
-        NSString *output = [self.executor outputOfCommand:self.gemLaunchPath inDirectory:nil withArguments:arguments exitCode:&exitCode];
+        __block int exitCode = -1;
+        __block NSString *output = nil;
+        [self.executor outputOfCommand:self.gemLaunchPath inDirectory:nil withArguments:arguments output:^(NSString * __nonnull internalOutput, int32_t internalExitCode)
+        {
+            output = internalOutput;
+            exitCode = internalExitCode;
+        }];
 
         // only continue with successful output and exit code
         if (nil != output && 0 == exitCode)
