@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6E310DA81B063EE600B5ED48 /* RunnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310DA71B063EE600B5ED48 /* RunnerViewController.m */; };
 		6E864C3A1B2A9DBB006E47C6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E864C391B2A9DBB006E47C6 /* Settings.swift */; };
-		6E8F44811AF2784300A50CC6 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F44801AF2784300A50CC6 /* Constants.m */; };
 		6E9269A51B2F124C00154905 /* ConsoleToolExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9269A41B2F124C00154905 /* ConsoleToolExecutor.swift */; };
 		6E9269A61B2F17F900154905 /* ConsoleToolExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9269A41B2F124C00154905 /* ConsoleToolExecutor.swift */; };
 		6E9269A81B2F1A8E00154905 /* FrankGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9269A71B2F1A8E00154905 /* FrankGUITests.swift */; };
@@ -37,8 +36,6 @@
 		6E310DA71B063EE600B5ED48 /* RunnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunnerViewController.m; sourceTree = "<group>"; };
 		6E864C381B2A9DBB006E47C6 /* FrankGUI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FrankGUI-Bridging-Header.h"; sourceTree = "<group>"; };
 		6E864C391B2A9DBB006E47C6 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		6E8F447F1AF2782400A50CC6 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		6E8F44801AF2784300A50CC6 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		6E9269A41B2F124C00154905 /* ConsoleToolExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleToolExecutor.swift; sourceTree = "<group>"; };
 		6E9269A71B2F1A8E00154905 /* FrankGUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrankGUITests.swift; sourceTree = "<group>"; };
 		6EAE94101B0A12070075C974 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -150,8 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				6E9269A41B2F124C00154905 /* ConsoleToolExecutor.swift */,
-				6E8F447F1AF2782400A50CC6 /* Constants.h */,
-				6E8F44801AF2784300A50CC6 /* Constants.m */,
 				6ECF1C751B300DE9007B977D /* SanityChecker.swift */,
 				6E864C391B2A9DBB006E47C6 /* Settings.swift */,
 				6E864C381B2A9DBB006E47C6 /* FrankGUI-Bridging-Header.h */,
@@ -267,7 +262,6 @@
 				6ECF1C761B300DE9007B977D /* SanityChecker.swift in Sources */,
 				6EAE94121B0A12070075C974 /* MainViewController.m in Sources */,
 				6E9269A51B2F124C00154905 /* ConsoleToolExecutor.swift in Sources */,
-				6E8F44811AF2784300A50CC6 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
