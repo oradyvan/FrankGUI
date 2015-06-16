@@ -8,7 +8,6 @@
 
 #import "SettingsViewController.h"
 #import "AppDelegate.h"
-#import "SanityChecker.h"
 #import "FrankGUI-Swift.h"
 
 @interface SettingsViewController () <SanityCheckerDelegate>

@@ -49,7 +49,7 @@ private extension NSUserDefaults
     }
 }
 
-class Settings : NSObject
+final class Settings : NSObject
 {
     @objc enum TabChoice : Int
     {

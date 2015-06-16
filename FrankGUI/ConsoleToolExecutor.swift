@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-class ConsoleToolExecutor : NSObject
+final class ConsoleToolExecutor : NSObject
 {
     private let shellPath: String?
 
