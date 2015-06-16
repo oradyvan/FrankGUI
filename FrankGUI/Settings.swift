@@ -103,9 +103,9 @@ final class Settings : NSObject
     override init()
     {
         // Attempt to read the values from user preferences
-        self.appPathURL = defaults.URLForKey(.AppPathURLKey)
-        self.scriptsPathURL = defaults.URLForKey(.ScriptsPathURLKey)
-        self.platform = defaults.stringForKey(.PlatformKey)
-        self.tabChoice = TabChoice(rawValue: defaults.integerForKey(.TabChoiceKey))!
+        appPathURL = defaults.URLForKey(.AppPathURLKey)
+        scriptsPathURL = defaults.URLForKey(.ScriptsPathURLKey)
+        platform = defaults.stringForKey(.PlatformKey)
+        tabChoice = TabChoice(rawValue: defaults.integerForKey(.TabChoiceKey))!
     }
 }

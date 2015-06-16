@@ -16,7 +16,7 @@ final class ConsoleToolExecutor : NSObject
     override init()
     {
         let environmentDict = NSProcessInfo.processInfo().environment
-        self.shellPath = environmentDict["SHELL"]
+        shellPath = environmentDict["SHELL"]
     }
 
     /**
@@ -154,7 +154,7 @@ final class ConsoleToolExecutor : NSObject
             let whichTool = "which \(toolName)"
             let args = ["-l", "-c", whichTool]
             var result: String? = nil
-            self.outputOfCommand(self.shellPath, inDirectory: nil, withArguments: args, output: { (internalResult: String, _) -> () in
+            outputOfCommand(shellPath, inDirectory: nil, withArguments: args, output: { (internalResult: String, _) -> () in
                 result = internalResult
             })
             return result
