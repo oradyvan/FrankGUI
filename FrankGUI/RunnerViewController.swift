@@ -66,7 +66,7 @@ final class RunnerViewController: NSViewController
 
     private func onExecutingTaskCompleted(task: NSTask)
     {
-        guard task.running else { return }
+        guard !task.running else { return }
 
         if (task.terminationStatus == 0)
         {
