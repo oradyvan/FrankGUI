@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E310DA81B063EE600B5ED48 /* RunnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310DA71B063EE600B5ED48 /* RunnerViewController.m */; };
 		6E6AA33A1B3B0AFD00A1D362 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA3391B3B0AFD00A1D362 /* MainViewController.swift */; };
 		6E864C3A1B2A9DBB006E47C6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E864C391B2A9DBB006E47C6 /* Settings.swift */; };
 		6E9269A51B2F124C00154905 /* ConsoleToolExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9269A41B2F124C00154905 /* ConsoleToolExecutor.swift */; };
 		6E9269A61B2F17F900154905 /* ConsoleToolExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9269A41B2F124C00154905 /* ConsoleToolExecutor.swift */; };
 		6E9269A81B2F1A8E00154905 /* FrankGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9269A71B2F1A8E00154905 /* FrankGUITests.swift */; };
+		6E944D5A1B4D4E54001B3F58 /* RunnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E944D591B4D4E54001B3F58 /* RunnerViewController.swift */; };
 		6ECF1C761B300DE9007B977D /* SanityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECF1C751B300DE9007B977D /* SanityChecker.swift */; };
 		6EF0F4271A8A03470012FD03 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0F4261A8A03470012FD03 /* AppDelegate.m */; };
 		6EF0F4291A8A03470012FD03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0F4281A8A03470012FD03 /* main.m */; };
@@ -32,13 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6E310DA61B063EE600B5ED48 /* RunnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunnerViewController.h; sourceTree = "<group>"; };
-		6E310DA71B063EE600B5ED48 /* RunnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunnerViewController.m; sourceTree = "<group>"; };
 		6E6AA3391B3B0AFD00A1D362 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6E864C381B2A9DBB006E47C6 /* FrankGUI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FrankGUI-Bridging-Header.h"; sourceTree = "<group>"; };
 		6E864C391B2A9DBB006E47C6 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		6E9269A41B2F124C00154905 /* ConsoleToolExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleToolExecutor.swift; sourceTree = "<group>"; };
 		6E9269A71B2F1A8E00154905 /* FrankGUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrankGUITests.swift; sourceTree = "<group>"; };
+		6E944D591B4D4E54001B3F58 /* RunnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnerViewController.swift; sourceTree = "<group>"; };
 		6ECF1C751B300DE9007B977D /* SanityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SanityChecker.swift; sourceTree = "<group>"; };
 		6EF0F4201A8A03470012FD03 /* FrankGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrankGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EF0F4241A8A03470012FD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -133,8 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				6E6AA3391B3B0AFD00A1D362 /* MainViewController.swift */,
-				6E310DA61B063EE600B5ED48 /* RunnerViewController.h */,
-				6E310DA71B063EE600B5ED48 /* RunnerViewController.m */,
+				6E944D591B4D4E54001B3F58 /* RunnerViewController.swift */,
 				6EF0F42A1A8A03470012FD03 /* SettingsViewController.h */,
 				6EF0F42B1A8A03470012FD03 /* SettingsViewController.m */,
 			);
@@ -253,8 +251,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EF0F42C1A8A03470012FD03 /* SettingsViewController.m in Sources */,
+				6E944D5A1B4D4E54001B3F58 /* RunnerViewController.swift in Sources */,
 				6EF0F4291A8A03470012FD03 /* main.m in Sources */,
-				6E310DA81B063EE600B5ED48 /* RunnerViewController.m in Sources */,
 				6EF0F4271A8A03470012FD03 /* AppDelegate.m in Sources */,
 				6E864C3A1B2A9DBB006E47C6 /* Settings.swift in Sources */,
 				6ECF1C761B300DE9007B977D /* SanityChecker.swift in Sources */,

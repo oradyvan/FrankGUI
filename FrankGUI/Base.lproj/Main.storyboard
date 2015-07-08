@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8121.20"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -667,7 +667,7 @@
         <!--Main View Controller-->
         <scene sceneID="u0g-SE-nbl">
             <objects>
-                <tabViewController selectedTabViewItemIndex="1" id="aWY-bK-Ksu" customClass="MainViewController" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="1" id="aWY-bK-Ksu" customClass="MainViewController" customModule="FrankGUI" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="uQO-ce-5NI"/>
                         <tabViewItem identifier="" id="OiN-IP-R2V"/>
@@ -690,7 +690,7 @@
         <!--Runner-->
         <scene sceneID="MW2-b7-BzT">
             <objects>
-                <viewController title="Runner" id="dHb-Xn-eBu" customClass="RunnerViewController" sceneMemberID="viewController">
+                <viewController title="Runner" id="dHb-Xn-eBu" customClass="RunnerViewController" customModule="FrankGUI" sceneMemberID="viewController">
                     <view key="view" id="rsY-lE-4Br">
                         <rect key="frame" x="0.0" y="0.0" width="608" height="422"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -709,7 +709,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="onFrankify:" target="dHb-Xn-eBu" id="KLU-wb-8zL"/>
+                                    <action selector="onFrankify:" target="dHb-Xn-eBu" id="FEX-oS-Kmb"/>
                                 </connections>
                             </button>
                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Naq-OU-pwJ">
@@ -736,7 +736,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="AMW-R4-4ge">
-                                    <rect key="frame" x="224" y="1" width="15" height="133"/>
+                                    <rect key="frame" x="360" y="1" width="15" height="380"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
