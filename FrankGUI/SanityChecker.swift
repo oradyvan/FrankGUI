@@ -8,7 +8,6 @@
 
 import Foundation
 
-@objc
 protocol SanityCheckerDelegate
 {
     /**
@@ -291,12 +290,12 @@ final class SanityChecker : NSObject
         return nil
     }
     
-    private func isValidRepositoryPathURL(pathURL: NSURL) -> Bool
+    private func isValidRepositoryPathURL(pathURL: NSURL?) -> Bool
     {
         // check that the given path points to an existing directory
-        if (pathURL.fileURL)
+        if (pathURL?.fileURL != nil)
         {
-            let path = pathURL.path
+            let path = pathURL?.path
             var pathIsDirectory: ObjCBool = false
             let pathExists = NSFileManager.defaultManager().fileExistsAtPath(path!, isDirectory: &pathIsDirectory)
             return pathExists && pathIsDirectory
@@ -308,17 +307,17 @@ final class SanityChecker : NSObject
     private func isValidAppPathURL() -> Bool
     {
         // there should be git branch available in that directory
-        return isValidRepositoryPathURL(settings.appPathURL!) &&
-            (gitBranchNameInAppPathURL!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0)
+        return isValidRepositoryPathURL(settings.appPathURL) &&
+            (gitBranchNameInAppPathURL?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0)
     }
 
     private func isValidScriptsPathURL() -> Bool
     {
         // there should be git branch available in that directory
-        return isValidRepositoryPathURL(settings.scriptsPathURL!) &&
-            (gitBranchNameInScriptsPathURL!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0)
+        return isValidRepositoryPathURL(settings.scriptsPathURL) &&
+            (gitBranchNameInScriptsPathURL?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0)
     }
-    
+
     private func areTheSameBranchesInAppAndInScriptsPaths() -> Bool
     {
         // both branches for app and for scripts must be the same
