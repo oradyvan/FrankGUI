@@ -765,7 +765,7 @@
         <!--Settings-->
         <scene sceneID="w7T-dO-FeW">
             <objects>
-                <viewController title="Settings" id="9S3-1d-eyq" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController title="Settings" id="9S3-1d-eyq" customClass="SettingsViewController" customModule="FrankGUI" sceneMemberID="viewController">
                     <view key="view" id="5yc-gP-MvD">
                         <rect key="frame" x="0.0" y="0.0" width="608" height="405"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -900,10 +900,10 @@
                                             <menuItem title="Item 3" id="t96-op-2az"/>
                                         </items>
                                     </menu>
+                                    <connections>
+                                        <action selector="platformPopUpValueChanged:" target="9S3-1d-eyq" id="2DI-AC-caY"/>
+                                    </connections>
                                 </popUpButtonCell>
-                                <connections>
-                                    <action selector="platformPopUpValueChanged:" target="9S3-1d-eyq" id="CaY-Be-VbF"/>
-                                </connections>
                             </popUpButton>
                             <button horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="NxG-q9-OSo">
                                 <rect key="frame" x="562" y="357" width="32" height="32"/>
