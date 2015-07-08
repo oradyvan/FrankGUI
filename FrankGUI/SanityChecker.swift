@@ -127,14 +127,14 @@ final class SanityChecker : NSObject
                 // only continue with successful output and exit code
                 if ((exitCode == 0) && (output?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0))
                 {
-                    let paths = output!.componentsSeparatedByString(":")
+                    let paths: [String] = output!.componentsSeparatedByString(":")
                     // begin searching through paths for the paritcular directory
                     let gemDirName = frankCucumberGemDirectoryName
                     let fileMan: NSFileManager = NSFileManager.defaultManager()
                     for path: String in paths
                     {
                         // construct candidate directory of gems common base directory and particular gem name
-                        let gemDir = "\(path)/gems/\(gemDirName)"
+                        let gemDir = "\(path)/gems/\(gemDirName!)"
                         var isDirectory: ObjCBool = false
                         if (fileMan.fileExistsAtPath(gemDir, isDirectory:&isDirectory))
                         {

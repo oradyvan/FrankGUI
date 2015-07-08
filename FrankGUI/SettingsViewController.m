@@ -136,6 +136,11 @@
 {
     // determine path to gem files based on current Ruby settings
     NSString *path = self.sanityChecker.frankCucumberGemPath;
+    if (path == nil)
+    {
+        NSLog(@"Oops, no path found to frank-cucumber gem!");
+        return;
+    }
     NSURL *url = [NSURL fileURLWithPath:path];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[url]];
 }
