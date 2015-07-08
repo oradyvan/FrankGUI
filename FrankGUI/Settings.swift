@@ -51,7 +51,7 @@ private extension NSUserDefaults
 
 final class Settings : NSObject
 {
-    @objc enum TabChoice : Int
+    enum TabChoice : Int
     {
         case Undefined
         case Runner

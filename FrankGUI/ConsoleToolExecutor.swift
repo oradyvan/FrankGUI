@@ -8,7 +8,6 @@
 
 import Foundation
 
-@objc
 final class ConsoleToolExecutor : NSObject
 {
     private let shellPath: String?
@@ -28,7 +27,6 @@ final class ConsoleToolExecutor : NSObject
     * it completes
     * @return A text representing standard output of the shell command
     */
-    @objc
     func outputOfCommand(command: String?,
         inDirectory directory: String?,
         withArguments arguments: [String]?,

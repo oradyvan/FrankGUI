@@ -37,7 +37,7 @@ final class SanityChecker : NSObject
     * to operate in the app. All levels except for WarnLevelError are considered safe
     * to operate.
     */
-    @objc enum WarnLevel: Int
+    enum WarnLevel: Int
     {
         case OK    // all sanity checks have passed successfully
         case Issue // there were some issues discovered during sanity checks
