@@ -216,14 +216,16 @@ final class SanityChecker : NSObject
 
         var result = [String]()
 
-        let enumerator = NSFileManager.defaultManager().enumeratorAtPath(envDir.absoluteString)
+        let enumerator = NSFileManager.defaultManager().enumeratorAtURL(envDir,
+            includingPropertiesForKeys: nil, options: .SkipsSubdirectoryDescendants, errorHandler: nil)
+
         while let file = enumerator?.nextObject() as? NSURL
         {
             // only include those ending with .sh
             if (file.pathExtension == "sh")
             {
                 // cut off the extension, turn base file name into upper case
-                if let baseName = file.URLByDeletingPathExtension?.absoluteString.uppercaseString
+                if let baseName = file.URLByDeletingPathExtension?.lastPathComponent?.uppercaseString
                 {
                     result.append(baseName)
                 }
