@@ -209,22 +209,24 @@ final class SanityChecker : NSObject
 
     func listOfAvailablePlatforms() -> [String]
     {
-        guard let envDir = settings.scriptsPathURL?.relativePath?.stringByAppendingPathComponent("env") else {
+        guard let envDir = settings.scriptsPathURL?.URLByAppendingPathComponent("env") else {
             // something went wrong - no path to "env" subdirectory
             return []
         }
 
         var result = [String]()
 
-        let enumerator = NSFileManager.defaultManager().enumeratorAtPath(envDir)
-        while let file = enumerator?.nextObject() as? String
+        let enumerator = NSFileManager.defaultManager().enumeratorAtPath(envDir.absoluteString)
+        while let file = enumerator?.nextObject() as? NSURL
         {
             // only include those ending with .sh
             if (file.pathExtension == "sh")
             {
                 // cut off the extension, turn base file name into upper case
-                let baseName = file.stringByDeletingPathExtension.uppercaseString
-                result.append(baseName)
+                if let baseName = file.URLByDeletingPathExtension?.absoluteString.uppercaseString
+                {
+                    result.append(baseName)
+                }
             }
         }
 

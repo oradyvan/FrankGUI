@@ -36,19 +36,20 @@ final class RunnerViewController: NSViewController
         let textView: NSTextView? = outputView?.contentView.documentView as? NSTextView
         textView?.textStorage?.mutableString.setString("")
 
-        let script: String? = settings?.scriptsPathURL?.relativePath?.stringByAppendingPathComponent("setup_frank.sh")
-
-        executor.asyncOutputOfCommand(script,
-            inDirectory: nil,
-            withArguments: nil,
-            withReadabilityHandler:
-            { (fileHandle: NSFileHandle) -> () in
-                let data = fileHandle.availableData
-                self.onFileHandleDataAvailable(data)
-            })
-            { (task: NSTask) -> () in
-                self.onExecutingTaskCompleted(task)
-            }
+        if let script = settings?.scriptsPathURL?.URLByAppendingPathComponent("setup_frank.sh")
+        {
+            executor.asyncOutputOfCommand(script.absoluteString,
+                inDirectory: nil,
+                withArguments: nil,
+                withReadabilityHandler:
+                { (fileHandle: NSFileHandle) -> () in
+                    let data = fileHandle.availableData
+                    self.onFileHandleDataAvailable(data)
+                })
+                { (task: NSTask) -> () in
+                    self.onExecutingTaskCompleted(task)
+                }
+        }
     }
     
     private func onFileHandleDataAvailable(aData: NSData)
